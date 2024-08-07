@@ -24,7 +24,7 @@ transform: scale(90%)
   border-color: brown;
 }
 
-.nupp.hover {
+.nupp:hover {
   cursor: pointer;
   opacity: 70%;
 }
