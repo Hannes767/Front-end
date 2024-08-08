@@ -50,7 +50,7 @@ function App() {
         <td>Italy</td>
       </tr>  
     </table>
-    
+    <br/>
 
     <iframe width="420" height="315" title="Kanad laulavad"
 src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1?controls=1">
