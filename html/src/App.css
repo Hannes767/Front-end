@@ -2,23 +2,18 @@
   text-align: center;
 }
 
-.nupp {
+button {
   background-color: green;
   color: lightgray;
 }
 
-.nupp:hover {
+button:hover {
   height: 100px;
   width: 100px;
 }
 
-.nupp:active {
+button:active {
   cursor: grab;
-}
-
-.tekst {
-  color: blue;
-  font-style: italic;
 }
 
 .tekst:hover {
@@ -35,11 +30,29 @@
   border: solid brown;
 }
 
-.pilt {
+img {
   float: right;
 }
 
-.pilt:hover {
+img:hover {
   opacity: 0.4;
   border-radius: 50px;
 }
+
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: solid lightgray;
+}
+
+th {
+  background-color: gray;
+}
+
+tr:nth-child(odd) {
+  background: lightgray;
+  }
