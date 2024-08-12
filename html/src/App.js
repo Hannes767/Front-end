@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -6,12 +5,16 @@ function App() {
     <div className="App">
 
       <button>Nupp</button>
+      <br />
 
       <p style={{ color: 'blue', fontStyle: "italic" }} className="tekst">Siin on uus tekst</p>
+      <br />
 
       <p className='tekst2'>Siin on teine tekst</p>
+      <br />
 
       <img src='https://www.interviewbit.com/blog/wp-content/uploads/2021/10/HTML-and-CSS-768x453.png' alt='HTML ja CSS pilt'></img>
+      <br />
 
     <table>
       <tr >
