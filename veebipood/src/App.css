@@ -32,3 +32,30 @@ transform: scale(90%)
 .nupp:active {
   text-decoration: underline;
 }
+
+.kuldne {
+  color: goldenrod;
+}
+
+.linn-aktiivne {
+  font-weight: bold;
+}
+
+.linn, .linn-aktiivne {
+  font-size: 20px;
+}
+
+.summa-aktiivne {
+color: red;
+border-color: blueviolet;
+}
+
+.summa-aktiivne, .summa {
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.keel-aktiivne {
+  text-decoration: underline;
+}
