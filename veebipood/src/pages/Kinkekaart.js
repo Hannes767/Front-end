@@ -26,9 +26,9 @@ function Kinkekaart() {
 
   return (
     <div>
-        <button className={summa === 20 ? "summa aktiivne" : "summa"} onClick={() => muudaSumma(20)}>20 eurot</button>
-        <button className={summa === 50 ? "summa aktiivne" : "summa"} onClick={() => muudaSumma(50)}>50 eurot</button>
-        <button className={summa === 100 ? "summa aktiivne" : "summa"} onClick={() => muudaSumma(100)}>100 eurot</button>
+        <button className={summa === 20 ? "summa-aktiivne" : "summa"} onClick={() => muudaSumma(20)}>20 eurot</button>
+        <button className={summa === 50 ? "summa-aktiivne" : "summa"} onClick={() => muudaSumma(50)}>50 eurot</button>
+        <button className={summa === 100 ? "summa-aktiivne" : "summa"} onClick={() => muudaSumma(100)}>100 eurot</button>
 
         <div>Kinkekaart {summa} eurot</div>
 
@@ -36,7 +36,7 @@ function Kinkekaart() {
 
         <button disabled={kogus === 1} onClick={ () => muudaKogus(kogus - 1)} >-</button>
         <span>{kogus} tk</span>
-        {kogus !== 1 && <button onClick={ () => muudaKogus(kogus + 1)}>+</button>}
+        {kogus !== 0 && <button onClick={ () => muudaKogus(kogus + 1)}>+</button>}
 
         <div>Kokku: {summa * kogus} eurot</div>
 
