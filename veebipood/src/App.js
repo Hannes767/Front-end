@@ -9,6 +9,7 @@ import Kinkekaart from './pages/Kinkekaart';
 import MitteLeitud from './pages/MitteLeitud';
 import Menyy from './components/Menyy';
 import Seaded from './pages/Seaded';
+import Profiil from './pages/Profiil';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route path='lisa-toode' element={ <LisaToode/> }/>
       <Route path='ostukorv' element={ <Ostukorv/> }/>
       <Route path='seaded' element={ <Seaded/> }/>
+      <Route path="profiil" element={<Profiil/>}/>
       <Route path='*' element={ <MitteLeitud/> }/>
       </Routes>
     </div> 

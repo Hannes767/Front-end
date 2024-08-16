@@ -59,3 +59,26 @@ border-color: blueviolet;
 .keel-aktiivne {
   text-decoration: underline;
 }
+
+td, th {
+  border: 1px solid black;
+  
+}
+
+table {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.protsent-aktiivne {
+  background-color: blue;
+}
+
+.kalkulaator td:hover {
+  cursor: pointer;
+}
+
+.kalkulaator td:active {
+  background-color: lightgray;
+}

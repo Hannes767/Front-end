@@ -23,7 +23,7 @@ function Meist() {
         <div>Välisturgude spetsialist</div>
         <button onClick={() => {n2itaKontakt(86923869028); n2itaNimi("Kerli Kõiv")}}>Võta ühendust</button>
         <br /><br />
-        {kontakt !=="" && <div>{nimi} {kontakt}</div>}
+        {kontakt !=="" && <div>{nimi} kontakt on {kontakt}</div>}
     </div>
   )
 }

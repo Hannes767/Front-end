@@ -27,6 +27,10 @@ function Menyy() {
       <Link to="seaded">
       <button className="nupp">Seaded</button>
       </Link>
+
+      <Link to="profiil">
+      <button className="nupp">Profiil</button>
+      </Link>
       
     </div>
   )
