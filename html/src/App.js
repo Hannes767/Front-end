@@ -1,9 +1,36 @@
 import './App.css';
+import {Routes, Route, Link} from "react-router-dom"
+import Avaleht from './pages/Avaleht';
+import Kontakt from './pages/Kontakt';
+import Meist from './pages/Meist';
+import Seaded from './pages/Seaded';
 
 function App() {
   return (
-    <div className="App">
+    <div>
 
+    <Link to= "/">
+        <button>Avaleht</button>
+      </Link>
+      <Link to= "/kontakt">
+        <button>Kontakt</button>
+      </Link>
+      <Link to= "/meist">
+        <button>Meist</button>
+      </Link>
+      <Link to= "/seaded">
+        <button>Seaded</button>
+      </Link>
+
+      <Routes>
+        <Route path="" element={<Avaleht/>}/>
+        <Route path="kontakt" element={<Kontakt/>}/>
+        <Route path="meist" element={<Meist/>}/>
+        <Route path="seaded" element={<Seaded/>}/>
+
+      </Routes>
+
+      {/* <div>
       <button>Nupp</button>
       <br />
 
@@ -15,7 +42,9 @@ function App() {
 
       <img src='https://www.interviewbit.com/blog/wp-content/uploads/2021/10/HTML-and-CSS-768x453.png' alt='HTML ja CSS pilt'></img>
       <br />
-
+      <br />
+      <br />
+      <br />
     <table>
       <tr >
         <th>Company</th>
@@ -57,7 +86,10 @@ function App() {
 
     <iframe width="420" height="315" title="Kanad laulavad"
 src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1?controls=1">
-</iframe>
+</iframe> 
+</div> */}
+
+      
 
 
     </div>

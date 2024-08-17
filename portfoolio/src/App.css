@@ -64,3 +64,8 @@
   color: #7ba9c3;
   cursor: pointer;
 }
+
+.sinu-CSS-klass-kui-aktiivne {
+ background-color: blue; 
+ color: white;
+}
