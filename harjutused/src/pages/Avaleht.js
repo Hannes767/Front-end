@@ -20,6 +20,10 @@ function Avaleht() {
             <button>Harjutus Uurimine</button>
         </Link>
 
+        <Link to="harjutus4">
+            <button>Harjutus4</button>
+        </Link>
+
 
     </div>
   )

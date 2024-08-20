@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 
 //värvid
 //tumesinine - JavaScriptis liigitus, htlm liigitus
@@ -9,20 +10,45 @@ function Kinkekaart() {
     const [summa, muudaSumma] = useState(20);
     const [kogus, muudaKogus] = useState(1);
     const emailViide = useRef();
-    const [sonum, muudaSonum] = useState("");
+    // const [sonum, muudaSonum] = useState("");
+    const showEmailRef = useRef();
+    const [showEmail, setShowEmail] = useState(false);
 
     //function lisa() {
     // }
 
     const lisa = () => {
+      // current - kontrollib kas ta on HTMLs
+      // null - tühjus, teab tüüpi, mis see tühjus on
+      // HTMLis olek on tühjus
+      //undefined - tühjus täielik
+        if (emailViide.current === undefined){
+          //if (showEmailRef.current.checked === false)
+            toast.info("Lisasid ostukorvi, aga ilma e-mailita")
+          return;
+        }
+
         if (emailViide.current.value === "") {
-          muudaSonum("Tühja e-mailiga ei saa ostukorvi lisada!");
+          toast.error("Tühja e-mailiga ei saa ostukorvi lisada!");
+
           return; // funktsioon lõppeb
         }
-          muudaSonum("Ostukorvi lisatud");
+
+        if (emailViide.current.value[4] !== "@") { //.value.chartAt(4) === "@"
+          toast.error("Viies täht peab olema @ märk");// .startsWith("@", 4) === false
+
+          return; // funktsioon lõppeb
+        }
+
+          toast.success("Ostukorvi lisatud!");
+          // muudaSonum("Ostukorvi lisatud");
       }
 
+      const muudaShowEmail = () => {
+        setShowEmail(showEmailRef.current.checked);//checkboxist lugemine
+      }
     
+
 
   return (
     <div>
@@ -42,10 +68,29 @@ function Kinkekaart() {
 
         <br /><br />
 
-        <div>{sonum}</div>
-        <label>E-mail</label>
-        <input ref={emailViide} type="text" />
+        <input onClick={muudaShowEmail} ref={showEmailRef} id="email_checkbox" type="checkbox" />
+        <label htmlFor="email_checkbox">Saada kinkekaart e-mailile</label>
+
+        <br />
+        {/* <div>{sonum}</div> */}
+
+        { showEmail === true &&
+        <React.Fragment>
+          <label htmlFor="email">E-mail</label>
+          <input id="email" ref={emailViide} type="text" />
+        </React.Fragment>}
+        {/* React Fragment - tühjus, sama mis tühjad nokad */}
+
+        <br /><br />
         <button onClick={lisa}>Lisa ostukorvi</button>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={4000}          
+          theme="dark"
+          />
+
+
 
     </div>
   )

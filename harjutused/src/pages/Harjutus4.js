@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useRef } from "react"
 
-function HarjutusedUurimine() {
-    const [nimi, muudaNimi] = useState("Jaan");
+function Harjutus4() {
+    const [sisselogitud, muudaSisselogitud] = useState("Sisselogimine");
     const nimiViide = useRef();
-    const [sonum, muudaSonum] = useState("Anname veast teada");
+    const [sonum, muudaSonum] = useState("");
 
     const lisa = () => {
         if (nimiViide.current.value === "") {
-          muudaNimi("Nime pole sisestatud");
+          muudaSisselogitud("Nime pole sisestatud");
           return; // funktsioon lõppeb
         }
 
@@ -18,25 +18,25 @@ function HarjutusedUurimine() {
             return;
         }
        
-        muudaNimi(nimiViide.current.value);
+        muudaSisselogitud(nimiViide.current.value);
     }
 
   return (
     <div>
         <Link to="/">
-            <button>Harjutus Uurimine</button>
+            <button>Harjutus4</button>
         </Link>
         <br /><br />
 
         <div>{sonum}</div>
-        <div>{nimi}</div>
+        <div>{sisselogitud}</div>
         <label>Nimi</label>
         <input ref={nimiViide} type="text" />
-        <button onClick={lisa}>Lisa nimi</button>
+        <button onClick={lisa}>Logi sisse</button>
 
 
     </div>
   )
 }
 
-export default HarjutusedUurimine
+export default Harjutus4

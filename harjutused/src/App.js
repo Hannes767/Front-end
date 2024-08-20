@@ -5,6 +5,7 @@ import Avaleht from './pages/Avaleht';
 import Harjutused1 from "./pages/Harjutused1"
 import Harjutused2 from "./pages/Harjutused2"
 import HarjutusedUurimine from "./pages/HarjutusedUurimine"
+import Harjutus4 from './pages/Harjutus4';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/harjutused1" element={<Harjutused1/>}/>
           <Route path="/harjutused2" element={<Harjutused2/>}/>
           <Route path="/harjutused-uurimine" element={<HarjutusedUurimine/>}/>
+          <Route path="/harjutus4" element={<Harjutus4/>}/>
       </Routes>
     </div>
   );
