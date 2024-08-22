@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Palgakalkulaator from '../components/Palgakalkulaator'
-import Kalkulaator from '../components/Kalkulaator'
+import Palgakalkulaator from '../../components/Palgakalkulaator'
+import Kalkulaator from '../../components/Kalkulaator'
 
 function MitteLeitud() {
   const [kalk, muudaKalk] = useState("palk");

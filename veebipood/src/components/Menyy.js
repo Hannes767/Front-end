@@ -31,6 +31,18 @@ function Menyy() {
       <Link to="profiil">
       <button className="nupp">Profiil</button>
       </Link>
+
+      <Link to="logi-sisse">
+      <button className="nupp">Logi sisse</button>
+      </Link>
+
+      <Link to="registreeru">
+      <button className="nupp">Registreeru</button>
+      </Link>
+
+      <Link to="hinnad">
+      <button className="nupp">Hinnad</button>
+      </Link>
       
     </div>
   )
