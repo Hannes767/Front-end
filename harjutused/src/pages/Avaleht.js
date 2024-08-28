@@ -24,6 +24,18 @@ function Avaleht() {
             <button>Harjutus4</button>
         </Link>
 
+        <Link to="months">
+            <button>Months</button>
+        </Link>
+
+        <Link to="animals">
+            <button>Animals</button>
+        </Link>
+
+        <Link to="words">
+            <button>Words</button>
+        </Link>
+
 
     </div>
   )

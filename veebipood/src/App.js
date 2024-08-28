@@ -13,6 +13,8 @@ import Profiil from './pages/useref/Profiil';
 import LogiSisse from './pages/useref/LogiSisse';
 import Registreeru from './pages/useref/Registreeru';
 import Hinnad from './pages/arrays/Hinnad';
+import Tootajad from './pages/arrays/Tootajad';
+import Tooted from './pages/arrays/Tooted';
 
 
 
@@ -35,6 +37,8 @@ function App() {
       <Route path="registreeru" element={<Registreeru/>}/>
       <Route path="hinnad" element={<Hinnad/>}/>
       <Route path='*' element={ <MitteLeitud/> }/>
+      <Route path="tootajad" element={<Tootajad/>}/>
+      <Route path="tooted" element={<Tooted/>}/>
       </Routes>
     </div> 
   ); 

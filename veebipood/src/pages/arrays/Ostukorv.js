@@ -7,19 +7,14 @@ function Ostukorv() {
   return (
     <div>
 
-      <div>Kokku: {ostukorv.length}</div>
-      {ostukorv.length > 0 && <button onClick={() => muudaOstukorv([])}>Tühjenda</button>}
+      <div>
+        <div>Kokku: {ostukorv.length}</div>
+        <div>{ostukorv.map(toode => <div>{toode}</div>)}</div>
+        {ostukorv.length === 0 && <div>Ostukorv on tühi</div>}
+        {ostukorv.length > 0 && <button onClick={() => muudaOstukorv([])}>Tühjenda</button>}
+      </div>
 
-      <div>{ostukorv.map(toode => <div>{toode}</div>)}</div>
-
-      {ostukorv.length === 0 && <div></div>}
-      <div>Ostukorv on tühi</div>
-      <Link to="/avaleht">Mine avalehele</Link>
-
-      
-      
-
-        
+      <Link to="/avaleht">Mine avalehele</Link>         
         
         
     </div>
