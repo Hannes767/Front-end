@@ -37,18 +37,37 @@ function Menyy() {
       </Link>
 
       <Link to="registreeru">
-      <button className="nupp">Registreeru</button>
+        <button className="nupp">Registreeru</button>
       </Link>
 
       <Link to="hinnad">
-      <button className="nupp">Hinnad</button>
+        <button className="nupp">Hinnad</button>
       </Link>
 
       <Link to="tootajad">
-      <button className="nupp">Töötajad</button>
+        <button className="nupp">Töötajad</button>
       </Link>
+
       <Link to="tooted">
-      <button className="nupp">Tooted</button>
+        <button className="nupp">Tooted</button>
+      </Link>
+
+      <br /><br />
+
+      <Link to="halda-esindused">
+        <button className="nupp">Halda esinduseid</button>
+      </Link>
+
+      <Link to="halda-hinnad">
+        <button className="nupp">Halda hindu</button>
+      </Link>
+
+      <Link to="halda-tootajad">
+        <button className="nupp">Halda töötajaid</button>
+      </Link>
+
+      <Link to="halda-tooted">
+        <button className="nupp">Halda tooteid</button>
       </Link>
       
     </div>
