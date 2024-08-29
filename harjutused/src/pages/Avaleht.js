@@ -36,6 +36,10 @@ function Avaleht() {
             <button>Words</button>
         </Link>
 
+        <Link to="sonajaarv">
+            <button>Sõna ja arv</button>
+        </Link>
+
 
     </div>
   )

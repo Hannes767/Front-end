@@ -31,17 +31,11 @@ function Harjutus4() {
       // } else {
       //   muudaSonum("Vale parool");
       // }
-      if (paroolRef.current.value === "123") {     //muuda parool pikemaks ja if-ide lõppu  
-        muudaSisselogitud("jah");
-        muudaSonum(kasutajaNimiRef.current.value +  " ,oled sisselogitud");
-        toast.success("Sees!");
-        toast.error("Parool läks valesti");
-        return;
-      } 
+      
 
       
 
-      if (paroolRef.current.value.length <= 8) {
+      if (paroolRef.current.value.length <= 5) {
         muudaSonum("Parool on liiga lühike!")        
         toast.error("Parool on liiga lühike");
         return;
@@ -50,25 +44,35 @@ function Harjutus4() {
 
 
       if (paroolRef.current.value === paroolRef.current.value.toLowerCase()) {
-          muudaSonum("Paroolis peab olema vähemalt üks suur täht!")
+          muudaSonum("Paroolis peab olema vähemalt üks suur ja üks väike täht!")
+          toast.error("Vaja on vähemalt ühte suurt ja väikest tähte");
           return;
       }
 
-      toast.error("Vaja on vähemalt ühte suurt tähte");
+      
 
       if (paroolRef.current.value === paroolRef.current.value.toUpperCase()) {
-              muudaSonum("Paroolis peab olema vähemalt üks väike täht!")
+              muudaSonum("Paroolis peab olema vähemalt üks suur ja üks väike täht!")
+              toast.error("Vaja on vähemalt ühte väikest ja suurt tähte");
           return;
                 }
     
-            toast.error("Vaja on vähemalt ühte väikest tähte");
+            
 
-      if (paroolRef.current.value.includes("%") === false) {
-                  muudaSonum("Parool ei ole korrektne");
+      if (paroolRef.current.value.includes("%") === true) {
+                  muudaSonum("Paroolis ei tohi olla % märki");
               return;
       }
           
       
+      if (paroolRef.current.value === "Aa1234") {     //muuda parool pikemaks ja if-ide lõppu  
+        muudaSisselogitud("jah");
+        muudaSonum(kasutajaNimiRef.current.value +  " ,oled sisselogitud");
+        toast.success("Sees!");
+        
+        return;
+      } 
+
 
   }
   
@@ -83,6 +87,7 @@ function Harjutus4() {
             <button>Harjutus4</button>
         </Link>
         <br /><br />
+        
 
         {/* <div>{lisa}</div> */}
         <div>{sonum}</div>

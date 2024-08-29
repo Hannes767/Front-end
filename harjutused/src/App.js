@@ -9,6 +9,7 @@ import Harjutus4 from './pages/Harjutus4';
 import Months from './pages/Months';
 import Animals from './pages/Animals';
 import Words from './pages/Words';
+import SonajaArv from './pages/SonajaArv';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/months" element={<Months/>}/>
           <Route path="/animals" element={<Animals/>}/>
           <Route path="/words" element={<Words/>}/>
+          <Route path="/sonajaarv" element={<SonajaArv/>}/>
       </Routes>
     </div>
   );
