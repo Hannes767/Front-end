@@ -1,12 +1,17 @@
 import React, {useState, useRef} from 'react'
+import hinnadFailist from "../../data/hinnad.json";
 
 function Hinnad() {
-  const [hinnad, muudaHinnad] = useState([5, 99, 42, 8, 491, 71, 123, 321, 2120, 33])
+  const [hinnad, muudaHinnad] = useState(hinnadFailist.slice())
   const hindRef = useRef();
 
   //mitu  tk välja näidatakse
   // tühjendamine
   // kui on tühi, siis anna sõnumiga teada, et ühtegi pole
+
+  const reset = () => {
+    muudaHinnad(hinnadFailist.slice());
+  }
 
   const lisaLoppu878 = () => {
     hinnad.push(878);
@@ -28,8 +33,42 @@ function Hinnad() {
     muudaHinnad(hinnad.slice());
   }
 
+  const sorteeriKasvavalt = () => {
+    hinnad.sort(((a, b) => a - b));
+    muudaHinnad(hinnad.slice());
+  }
+
+  const sorteeriKahanevalt = () => {
+    hinnad.sort(((a, b) => b - a));
+    muudaHinnad(hinnad.slice());
+  }
+
+  const sorteeriAZ = () => {
+    hinnad.sort();
+    muudaHinnad(hinnad.slice());
+  }
+
+  const filtreeriSuuremadKui100 = () => {
+    const vastus = hinnad.filter(hind => hind > 100);
+    muudaHinnad(vastus);
+  }
+
+  const filtreeriVaiksemadKui50 = () => {
+    const vastus = hinnad.filter(hind => hind < 50);
+    muudaHinnad(vastus);
+  }
+
+  const filtreeri1SisaldavadNumbrid = () => {
+    const vastus = hinnad.filter(hind => String(hind).includes("1"));
+    muudaHinnad(vastus);
+    
+  }
+
   return (
     <div>
+      <button onClick={reset}>Reset</button>
+      <br /><br />
+
       <label >Hind</label><br />
       <input ref={hindRef} type="number" /><br />
       <button onClick={lisaVormist}>Sisesta</button>
@@ -47,6 +86,17 @@ function Hinnad() {
       {/* {[5, 99, 42, 8, 491, 71, 123, 321, 2120, 33].map(hind => <button>{hind}</button>)} */}
       
       <button onClick={lisaLoppu878}>Lisa lõppu 878</button>
+
+      <br /><br />
+
+      <button onClick={sorteeriKasvavalt}>Sorteeri kasvavalt</button>
+      <button onClick={sorteeriKahanevalt}>Sorteeri kahanevalt</button>
+      <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
+
+      <br /><br />
+      <button onClick={filtreeriSuuremadKui100}>Filtreeri suuremad kui 100</button>
+      <button onClick={filtreeriVaiksemadKui50}>Filtreeri väiksemad kui 50</button>
+      <button onClick={filtreeri1SisaldavadNumbrid}>Filtreeri kellel on 1</button>
 
       <br /><br />
 

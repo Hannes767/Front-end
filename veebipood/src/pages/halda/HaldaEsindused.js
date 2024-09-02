@@ -1,19 +1,20 @@
 import React, {useState, useRef} from 'react'
+import keskusedJSON from "../../data/keskused.json";
 
 function HaldaEsindused() {
     
-    const [keskused, muudaKeskused] = useState(["Ülemiste", "Rocca al Mare", "Magistrali",
-         "Vesse", "Kristiine", "Järveotsa"]);
+    const [keskused, muudaKeskused] = useState(keskusedJSON.slice());
     const keskusRef = useRef();
 
     const kustuta = (index) => {
-        keskused.splice(index,1);
-        muudaKeskused(keskused.slice());
+        keskusedJSON.splice(index,1);
+        muudaKeskused(keskusedJSON.slice());
     }
 
     const lisa = () => {
-        keskused.push(keskusRef.current.value);
-        muudaKeskused(keskused.slice());
+        // keskused.push(keskusRef.current.value) muudab ainult html-is;
+        keskusedJSON.push(keskusRef.current.value);// muudab .json failis
+        muudaKeskused(keskusedJSON.slice());
 
     }
 

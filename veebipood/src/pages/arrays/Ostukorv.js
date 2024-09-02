@@ -1,29 +1,35 @@
 import React, {useState} from 'react'
 import { Link } from "react-router-dom"
+import ostukorvFailist from "../../data/ostukorv.json"
 
 function Ostukorv() {
-  const [ostukorv, muudaOstukorv] = useState (["Coca", "Fanta", "Sprite"]);
+  const [ostukorv, muudaOstukorv] = useState (ostukorvFailist.slice());
 
   const lisaRedBull = () => {
     // muudaOstukorv(["Coca", "Fanta", "Sprite", "Red bull"])
-    ostukorv.push("Red bull");
-    muudaOstukorv(ostukorv.slice());
+    ostukorvFailist.push("Red bull");
+    muudaOstukorv(ostukorvFailist.slice());
   }
 
   const lisaVichy = () => {
     // muudaOstukorv(["Coca", "Fanta", "Sprite", "Vichy"])
-    ostukorv.push("Vichy");
-    muudaOstukorv(ostukorv.slice());
+    ostukorvFailist.push("Vichy");
+    muudaOstukorv(ostukorvFailist.slice());
   }
     //saan kätte onClick abil
   const lisa = (uusToode) => {
-    ostukorv.push(uusToode);
-    muudaOstukorv(ostukorv.slice());
+    ostukorvFailist.push(uusToode);
+    muudaOstukorv(ostukorvFailist.slice());
   }
       //kui tuleb sulgude sees tühjus/sõna,siis konverteerib asukoha nulliks
   const kustuta = (index) => {
-    ostukorv.splice(index, 1);
-    muudaOstukorv(ostukorv.slice());
+    ostukorvFailist.splice(index, 1);
+    muudaOstukorv(ostukorvFailist.slice());
+  }
+
+  const tyhenda = () => {
+    ostukorvFailist.splice(0);
+    muudaOstukorv(ostukorvFailist.slice()); //alates 0st, lõpuni välja kustutab
   }
 
   return (
@@ -41,7 +47,7 @@ function Ostukorv() {
           </div>)}
         </div>
         {ostukorv.length === 0 && <div>Ostukorv on tühi</div>}
-        {ostukorv.length > 0 && <button onClick={() => muudaOstukorv([])}>Tühjenda</button>}
+        {ostukorv.length > 0 && <button onClick={tyhenda}>Tühjenda</button>}
 
       </div>
 

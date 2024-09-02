@@ -1,18 +1,19 @@
 import React, {useState, useRef} from 'react'
+import hinnadJson from "../../data/hinnad.json"
 
 function HaldaHinnad() {
-    const [hinnad, muudaHinnad] = useState([5, 99, 42, 8, 491, 71, 123, 321, 2120, 33])
+    const [hinnad, muudaHinnad] = useState(hinnadJson.slice());
     const hindRef = useRef();
 
 
     const kustuta = (index) => {
-        hinnad.splice(index,1);
-        muudaHinnad(hinnad.slice());
+        hinnadJson.splice(index,1);
+        muudaHinnad(hinnadJson.slice());
     }
 
     const lisa = () => {
-        hinnad.push(hindRef.current.value);
-        muudaHinnad(hinnad.slice());
+        hinnadJson.push(hindRef.current.value);
+        muudaHinnad(hinnadJson.slice());
     }
 
   return (
