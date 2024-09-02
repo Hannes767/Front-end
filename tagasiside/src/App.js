@@ -13,7 +13,7 @@ function App() {
         </Link>
 
         <Link to="/tagasiside">
-            <button>Tagasisided</button>
+            <button>Tagasiside</button>
         </Link>
 
       <Routes>
