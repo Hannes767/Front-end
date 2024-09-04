@@ -40,6 +40,18 @@ function Avaleht() {
             <button>Sõna ja arv</button>
         </Link>
 
+        <Link to="toesusvaartused">
+            <button>Tõesusväärtused</button>
+        </Link>
+
+        <Link to="algabkindlatahemargiga">
+            <button>Algab kindla tähemärgiga</button>
+        </Link>
+
+        <Link to="pikkusekontroll">
+            <button>Pikkuse kontroll</button>
+        </Link>
+
 
     </div>
   )

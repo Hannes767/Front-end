@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import { useState, useRef } from "react"
 
 function HarjutusedUurimine() {
-    const [nimi, muudaNimi] = useState("Jaan");
+    const [nimi, muudaNimi] = useState("");
     const nimiViide = useRef();
-    const [sonum, muudaSonum] = useState("Anname veast teada");
+    const [sonum, muudaSonum] = useState("");
 
     const lisa = () => {
         if (nimiViide.current.value === "") {
-          muudaNimi("Nime pole sisestatud");
+          muudaSonum("Nime pole sisestatud");
           return; // funktsioon lõppeb
         }
 
@@ -19,6 +19,7 @@ function HarjutusedUurimine() {
         }
        
         muudaNimi(nimiViide.current.value);
+        muudaSonum("");
     }
 
   return (

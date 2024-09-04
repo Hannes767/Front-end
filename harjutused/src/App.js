@@ -10,6 +10,9 @@ import Months from './pages/Months';
 import Animals from './pages/Animals';
 import Words from './pages/Words';
 import SonajaArv from './pages/SonajaArv';
+import Toesusvaartused from './pages/Toesusvaartused';
+import AlgabKindlaTahemargiga from './pages/AlgabKindlaTahemargiga';
+import PikkuseKontroll from './pages/PikkuseKontroll';
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
           <Route path="/animals" element={<Animals/>}/>
           <Route path="/words" element={<Words/>}/>
           <Route path="/sonajaarv" element={<SonajaArv/>}/>
+          <Route path="/toesusvaartused" element={<Toesusvaartused/>}/>
+          <Route path="/algabkindlatahemargiga" element={<AlgabKindlaTahemargiga/>}/>
+          <Route path="/pikkusekontroll" element={<PikkuseKontroll/>}/>
       </Routes>
     </div>
   );

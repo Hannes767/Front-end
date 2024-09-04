@@ -9,22 +9,21 @@ function Harjutused2() {
 
     const lisa = () => {
         if (emailViide.current.value === "") {
-          muudaMeil("E-mail on tühi");
+          muudaSonum("E-mail on tühi");
           return; // funktsioon lõppeb
         }
 
         if (emailViide.current.value.includes(".") === false) {
-            muudaSonum("Punkt on puudu!");
-            return;
+          muudaSonum("Punkt on puudu!");
+          return;
         }
 
         if (emailViide.current.value.includes(".") === true) {
-            muudaSonum("");
-            return;
-        }
-            
-        
+          muudaSonum("");
           muudaMeil(emailViide.current.value);
+          return;
+        }
+              
     }
 
   return (
@@ -42,6 +41,7 @@ function Harjutused2() {
         <label>E-mail</label>
         <input ref={emailViide} type="text" />
         <button onClick={lisa}>Lisa e-mail</button>
+        
 
 
         
