@@ -13,6 +13,7 @@ import SonajaArv from './pages/SonajaArv';
 import Toesusvaartused from './pages/Toesusvaartused';
 import AlgabKindlaTahemargiga from './pages/AlgabKindlaTahemargiga';
 import PikkuseKontroll from './pages/PikkuseKontroll';
+import Books from './pages/Books';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/toesusvaartused" element={<Toesusvaartused/>}/>
           <Route path="/algabkindlatahemargiga" element={<AlgabKindlaTahemargiga/>}/>
           <Route path="/pikkusekontroll" element={<PikkuseKontroll/>}/>
+          <Route path="/books" element={<Books/>}/>
       </Routes>
     </div>
   );

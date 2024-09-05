@@ -52,7 +52,7 @@ function Esindused() {
         muudaKeskused(vastus);
     }
 
-    const filtreeriKellelViiamneTahtE = () => {
+    const filtreeriKellelViimaneTahtE = () => {
         const vastus = keskusedFailist.filter(keskus => keskus.endsWith("e"));
         muudaKeskused(vastus);
     }
@@ -86,7 +86,7 @@ function Esindused() {
                 <button onClick={filtreeriTahemarkeRohkemKui17}>Filtreeri kellel tähemärke rohkem kui  7</button>
                 <button onClick={filtreeriTahemarkeTapselt9}>Filtreeri kellel tähemärke täpselt 9</button>
                 <button onClick={filtreeriKesSisaldabIsLyhendit}>Filtreeri kes sisaldab is lühendit</button>
-                <button onClick={filtreeriKellelViiamneTahtE}>Filtreeri kellel on viimane täht "e"</button>
+                <button onClick={filtreeriKellelViimaneTahtE}>Filtreeri kellel on viimane täht "e"</button>
                 <button onClick={filtreeriKellelOnKolmasTahtI}>Filtreeri kellel on kolmas täht "i"</button>
                 {/* <div>Ülemiste</div>        
                 <div>Rocca al Mare</div>

@@ -13,13 +13,16 @@ function Animals() {
         </Link>
         <br/><br/>
 
-<div>
-        <div>Kokku: {loomad.length}</div>
+        <div>
+          <div>Kokku: {loomad.length}</div>
           {loomad.length > 0 && <button onClick={() => muudaLoomad([])}>Tühjenda</button>}
           <br/>
         </div>
-        <div>{loomad.map(loom => <div>{loom}</div>)}</div>
-        {loomad.length === 0 && <div>Loomi ei kuvata</div>}
+          <div>{loomad.map(loom => 
+            <div>{loom}</div>)}
+          </div>
+            {loomad.length === 0 && <div>Loomi ei kuvata
+        </div>}
         
 
       

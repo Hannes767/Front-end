@@ -52,6 +52,10 @@ function Avaleht() {
             <button>Pikkuse kontroll</button>
         </Link>
 
+        <Link to="books">
+            <button>Books</button>
+        </Link>
+
 
     </div>
   )

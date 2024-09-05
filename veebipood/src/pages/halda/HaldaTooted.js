@@ -1,17 +1,18 @@
 import React,{useState, useRef} from 'react'
+import tootedFailist from "../../data/tooted.json"
 
 function HaldaTooted() {
-  const [tooted, muudaTooted] = useState(["Audi", "BMW", "Skoda", "Kia", "Toyota", "Mazda"]);
-  const tootajaRef = useRef();
+  const [tooted, muudaTooted] = useState(tootedFailist.slice());
+  const tootedRef = useRef();
 
 const kustuta = (index) => {
-   tooted.splice(index,1);
-   muudaTooted(tooted.slice());
+   tootedFailist.splice(index,1);
+   muudaTooted(tootedFailist.slice());
 }
 
 const lisa = () => {
-   tooted.push(tootajaRef.current.value);
-   muudaTooted(tooted.slice());
+   tootedFailist.push(tootedRef.current.value);
+   muudaTooted(tootedFailist.slice());
 
 }
 
@@ -19,7 +20,7 @@ const lisa = () => {
 return (
 <div>
    <label>Toote nimetus</label><br />
-   <input ref={tootajaRef} type="text" /><br />
+   <input ref={tootedRef} type="text" /><br />
    <div>Kokku: {tooted.length}</div>
    <button onClick={lisa}>Lisa</button><br /><br />
 
