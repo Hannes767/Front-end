@@ -2,11 +2,16 @@ import React, {useState} from 'react'
 import { Link } from "react-router-dom"
 
 function Books() {
+    const koopia = ["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Tõde ja õigus", "Nipernaadi"]
     const [raamatud, muudaRaamatud] = useState (["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Tõde ja õigus", "Nipernaadi"]);
     
+    
+
+    }
         
     const reset = () => {
-        muudaRaamatud (raamatud.slice());
+        muudaRaamatud(koopia.slice());
+        // muudaRaamatud (["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Tõde ja õigus", "Nipernaadi"]);
     }
 
     const sorteeriAZ = () => {

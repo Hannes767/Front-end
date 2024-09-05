@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import kasutajadFailist from "../../data/kasutajad.json";
 
 function Profiil() {
     const aadressRef = useRef();
@@ -45,6 +46,9 @@ function Profiil() {
 
   return (
     <div>
+        <div>Meie kõik kasutajad:</div>
+        <div>{kasutajadFailist.map(k => <div>{k}</div>)}</div>
+
         <div>{sonum}</div>
         <div>Sinu aadress: {aadress} </div>
         <div>Sinu email: {email}</div>

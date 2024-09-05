@@ -37,20 +37,25 @@ function Tooted() {
     muudaTooted(tooted.slice());
   }
 
-  const filtreeriKelleEsimeneTahtB = () => {
-    const vastus = tootedFailist.filter(toode => toode.startsWith("B"));
+  const filtreeriAlgav = (taht) => {
+    const vastus = tootedFailist.filter(toode => toode.startsWith(taht));
     muudaTooted(vastus);
   }
 
-  const filtreeriKelleEsimeneTahtN = () => {
-    const vastus = tootedFailist.filter(toode => toode.startsWith("N"));
-    muudaTooted(vastus);
-  }
+  // const filtreeriKelleEsimeneTahtB = () => {
+  //   const vastus = tootedFailist.filter(toode => toode.startsWith("B"));
+  //   muudaTooted(vastus);
+  // }
 
-  const filtreeriKelleEsimeneTahtT = () => {
-    const vastus = tootedFailist.filter(toode => toode.startsWith("T"));
-    muudaTooted(vastus);
-  }
+  // const filtreeriKelleEsimeneTahtN = () => {
+  //   const vastus = tootedFailist.filter(toode => toode.startsWith("N"));
+  //   muudaTooted(vastus);
+  // }
+
+  // const filtreeriKelleEsimeneTahtT = () => {
+  //   const vastus = tootedFailist.filter(toode => toode.startsWith("T"));
+  //   muudaTooted(vastus);
+  // }
 
   return (
     <div>
@@ -77,9 +82,9 @@ function Tooted() {
       <button onClick={sorteeriTahedKahanevalt}>Sorteeri tähed kahanevalt</button>
       <br /><br />
 
-      <button onClick={filtreeriKelleEsimeneTahtB}>Filtreeri kellel on esimene täht B</button>
-      <button onClick={filtreeriKelleEsimeneTahtN}>Filtreeri kellel on esimene täht N</button>
-      <button onClick={filtreeriKelleEsimeneTahtT}>Filtreeri kellel on esimene täht T</button>
+      <button onClick= {filtreeriAlgav("B")}>Filtreeri kellel on esimene täht B</button>
+      <button onClick={filtreeriAlgav("N")}>Filtreeri kellel on esimene täht N</button>
+      <button onClick={filtreeriAlgav("T")}>Filtreeri kellel on esimene täht T</button>
       <br />
       
 

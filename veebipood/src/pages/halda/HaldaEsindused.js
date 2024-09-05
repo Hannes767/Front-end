@@ -1,5 +1,6 @@
 import React, {useState, useRef} from 'react'
 import keskusedJSON from "../../data/keskused.json";
+import {Link} from "react-router-dom";
 
 function HaldaEsindused() {
     
@@ -29,6 +30,10 @@ function HaldaEsindused() {
             <div>
                {index}. {keskus}
                 <button onClick={() => kustuta(index)}>x</button>
+                {/* App.js: muuda-esindus/:jrknr */}
+                <Link to={"/muuda-esindus/" + index}>                
+                <button>Muuda</button>
+                </Link>
             </div>)}
     </div>
   )

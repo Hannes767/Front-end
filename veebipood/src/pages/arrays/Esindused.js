@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import {Link} from "react-router-dom"
 import keskusedFailist from "../../data/keskused.json"
+
 
 function Esindused() {
     const [linn, muudaLinn] = useState("Tallinn");
@@ -94,7 +96,13 @@ function Esindused() {
                 <div>Vesse</div>        
                 <div>Kristiine</div>        
                 <div>Järveotsa</div> */}
-                {keskused.map(keskus => <div>{keskus}<button>Vaata lähemalt</button></div>)}
+                {keskused.map((keskus, index) =>
+                    <div>
+                        {keskus}
+                        <Link to={"/esindus/" + index}>                        
+                            <button>Vaata lähemalt</button>
+                        </Link>
+                    </div>)}
             </div>}
 
        { linn === "Tartu" &&

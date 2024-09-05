@@ -1,5 +1,6 @@
 import React, {useRef} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
+import kasutajadFailist from "../../data/kasutajad.json"
 
 function Registreeru() {
     const kasutajanimiRef = useRef();
@@ -30,6 +31,8 @@ function Registreeru() {
             toast.error("Parool pole kokkulepitud parool");
             return;
         }
+
+        kasutajadFailist.push(kasutajanimiRef.current.value);
         
         toast.success("Sisselogitud!");
 
