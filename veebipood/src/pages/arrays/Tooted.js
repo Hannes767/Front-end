@@ -66,12 +66,16 @@ function Tooted() {
         {tooted.length > 0 && <button onClick={() => muudaTooted([])}>Tühjenda</button>}
         <br/><br/>
       </div>
-        {tooted.map(toode => 
-          <div>
+        {tooted.map((toode, index )=> 
+          <div key={index}>
             {toode}
             <button onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi</button>
+            <Link to={"/toode/" + index}>                        
+                <button>Vaata lähemalt</button>
+            </Link>
           </div>)
             }
+
 
         {tooted.length === 0 && <div>Tooteid ei ole</div>}
 
@@ -82,10 +86,10 @@ function Tooted() {
       <button onClick={sorteeriTahedKahanevalt}>Sorteeri tähed kahanevalt</button>
       <br /><br />
 
-      <button onClick= {filtreeriAlgav("B")}>Filtreeri kellel on esimene täht B</button>
-      <button onClick={filtreeriAlgav("N")}>Filtreeri kellel on esimene täht N</button>
-      <button onClick={filtreeriAlgav("T")}>Filtreeri kellel on esimene täht T</button>
-      <br />
+      <button onClick= {() => filtreeriAlgav ("B")}>Filtreeri kellel on esimene täht B</button>
+      <button onClick={() => filtreeriAlgav ("N")}>Filtreeri kellel on esimene täht N</button>
+      <button onClick={() => filtreeriAlgav ("T")}>Filtreeri kellel on esimene täht T</button>
+      <br /> 
       
 
       <Link to="/avaleht">Mine avalehele</Link>

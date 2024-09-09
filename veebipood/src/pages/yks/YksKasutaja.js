@@ -1,8 +1,14 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 function YksKasutaja() {
+  // kasutaja/:nimi
+  const {nimi} = useParams();
+
   return (
-    <div>YksKasutaja</div>
+    <div>
+      Kasutajanimi: {nimi}
+    </div>
   )
 }
 

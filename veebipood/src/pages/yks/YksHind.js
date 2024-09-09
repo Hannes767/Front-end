@@ -9,9 +9,9 @@ function YksHind() {
   return (
     <div>
         <div>Järjekorranumber, mis on URLis: {hinnaIndex}</div>
-        <div>Hind, millele klikiti: {leitud}</div>
+        <div>Hind, millele klikiti: {leitud.number}</div>
         <div>Jne mingid omadused...</div>
-        <div>Hinna lisaja süsteemi: {}</div>
+        <div>Hinna lisaja süsteemi: {leitud.lisaja}</div>
     </div>
   )
 }

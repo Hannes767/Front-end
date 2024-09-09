@@ -60,14 +60,14 @@ function App() {
 
       <Route path="esindus/:index" element={<YksEsindus/>}/>
       <Route path="hind/:hinnaIndex" element={<YksHind/>}/>
-      <Route path="kasutaja" element={<YksKasutaja/>}/>
-      <Route path="toode" element={<YksToode/>}/>
-      <Route path="tootaja" element={<YksTootaja/>}/>
+      <Route path="kasutaja/:nimi" element={<YksKasutaja/>}/>
+      <Route path="toode/:index" element={<YksToode/>}/>
+      <Route path="tootaja/:index" element={<YksTootaja/>}/>
 
       <Route path="muuda-esindus/:jrknr" element={<MuudaEsindus/>}/>
       <Route path="muuda-hind/:index" element={<MuudaHind/>}/>
-      <Route path="muuda-toode" element={<MuudaToode/>}/>
-      <Route path="muuda-tootaja" element={<MuudaTootaja/>}/>
+      <Route path="muuda-toode/:index" element={<MuudaToode/>}/>
+      <Route path="muuda-tootaja/:index" element={<MuudaTootaja/>}/>
 
       </Routes>
     </div> 

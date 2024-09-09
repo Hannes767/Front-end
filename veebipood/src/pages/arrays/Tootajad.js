@@ -76,8 +76,15 @@ const filtreeriPaarisarvTahti = () => {
         {tootajad.length > 0 && <button onClick={() => muudaTootajad([])}>Tühjenda</button>}
         <br/>
       </div>
-      <div>{tootajad.map(tootaja => 
-        <div>{tootaja}</div>)}</div>
+      <div>{tootajad.map((tootaja, index )=> 
+        <div key={index}>
+          {tootaja}
+          <Link to={"/tootaja/" + index}>                        
+            <button>Vaata lähemalt</button>
+          </Link>
+        </div>)}
+      </div>
+
         {tootajad.length === 0 && 
         <div>Töötajaid ei ole</div>}
 

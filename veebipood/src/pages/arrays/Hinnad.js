@@ -15,52 +15,52 @@ function Hinnad() {
   }
 
   const lisaLoppu878 = () => {
-    hinnad.push(878);
-    muudaHinnad(hinnad.slice());
+    hinnadFailist.push({"number": 878, "lisaja": "Tavainimene"});
+    muudaHinnad(hinnadFailist.slice());
   }
 
   const lisa = (hind) => {
-    hinnad.push(hind);
-    muudaHinnad(hinnad.slice());
+    hinnadFailist.push(hind);
+    muudaHinnad(hinnadFailist.slice());
   }
 
   const kustuta = (jrknr) => {
-    hinnad.splice(jrknr, 1); //mitmendat, mitu tk
-    muudaHinnad(hinnad.slice());
+    hinnadFailist.splice(jrknr, 1); //mitmendat, mitu tk
+    muudaHinnad(hinnadFailist.slice());
   }
 
   const lisaVormist = () => {
-    hinnad.push(hindRef.current.value);
-    muudaHinnad(hinnad.slice());
+    hinnadFailist.push({"number": hindRef.current.value, "lisaja": "Vorm"});
+    muudaHinnad(hinnadFailist.slice());
   }
 
   const sorteeriKasvavalt = () => {
-    hinnad.sort(((a, b) => a - b));
+    hinnad.sort(((a, b) => a.number - b.number));
     muudaHinnad(hinnad.slice());
   }
 
   const sorteeriKahanevalt = () => {
-    hinnad.sort(((a, b) => b - a));
+    hinnad.sort(((a, b) => b.number - a.number));
     muudaHinnad(hinnad.slice());
   }
 
   const sorteeriAZ = () => {
-    hinnad.sort();
+    hinnad.sort((a,b) => String (a.number).localeCompare(String(b.number)));
     muudaHinnad(hinnad.slice());
   }
 
   const filtreeriSuuremadKui100 = () => {
-    const vastus = hinnad.filter(hind => hind > 100);
+    const vastus = hinnadFailist.filter(hind => hind.number > 100);
     muudaHinnad(vastus);
   }
 
   const filtreeriVaiksemadKui50 = () => {
-    const vastus = hinnad.filter(hind => hind < 50);
+    const vastus = hinnadFailist.filter(hind => hind.number < 50);
     muudaHinnad(vastus);
   }
 
   const filtreeri1SisaldavadNumbrid = () => {
-    const vastus = hinnad.filter(hind => String(hind).includes("1"));
+    const vastus = hinnadFailist.filter(hind => String(hind.number).includes("1"));
     muudaHinnad(vastus);
     
   }
@@ -102,8 +102,8 @@ function Hinnad() {
       <br /><br />
 
       {hinnad.map((hind, index)=> 
-        <div>
-          <button onClick={() => lisa(hind)}>{hind}</button>
+        <div key={index}>
+          <button onClick={() => lisa(hind)}>{hind.number}</button>
           {/* esimene kaldkriips ära lisa  olemasolevale URL-ile 
           teine kaldkriips URL ja muutuja oleksid eraldatud */}
           

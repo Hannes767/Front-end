@@ -1,12 +1,11 @@
 [
-    5,
-    99,
-    42,
-    8,
-    491,
-    71,
-    123,
-    321,
-    2120,
-    33
+    {"number": 5, "lisaja": "Hannes"},
+    {"number": 99, "lisaja": "Hannes"},
+    {"number": 78, "lisaja": "Hannes"},
+    {"number": 98, "lisaja": "Hannes"},
+    {"number": 75, "lisaja": "Hannes"},
+    {"number": 2341, "lisaja": "Hannes"},
+    {"number": 33, "lisaja": "Hannes"},
+    {"number": 875, "lisaja": "Hannes"},
+    {"number": 686, "lisaja": "Hannes"}    
 ]

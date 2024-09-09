@@ -9,13 +9,18 @@ function YksEsindus() {
     const vastus = esindusedFailist[index];
     //järjekorranumbriga seotud näited
 
+    if (vastus === undefined) {
+      //kui on tingimused täidetud, siis siin  HTML väljakuvamine lõppeb
+    return <div>Esindust ei leitud</div>
+    }
+
   return (
     <div>
         <div>URLis olev muutuja: {index}</div>
-        <h2>Esinduse nimi: {vastus}</h2>
+        <h2>Esinduse nimi: {vastus.nimi}</h2>
         <hr />
-        <p>E-mail: {}</p>
-        <p>Telefon: {}</p>
+        <p>Aadress: {vastus.aadr}</p>
+        <p>Telefon: {vastus.tel}</p>
     </div>
   )
 }

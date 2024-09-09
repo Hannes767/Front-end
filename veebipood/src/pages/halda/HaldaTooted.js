@@ -1,5 +1,6 @@
 import React,{useState, useRef} from 'react'
 import tootedFailist from "../../data/tooted.json"
+import {Link} from "react-router-dom"
 
 function HaldaTooted() {
   const [tooted, muudaTooted] = useState(tootedFailist.slice());
@@ -25,9 +26,12 @@ return (
    <button onClick={lisa}>Lisa</button><br /><br />
 
    {tooted.map((toode, jrknr)=>
-       <div>
+       <div key={jrknr}>
           {jrknr}. {toode}
            <button onClick={() => kustuta(jrknr)}>x</button>
+           <Link to= {"/muuda-toode/" + jrknr}>
+              <button>Muuda</button>
+           </Link>
        </div>)}
 
        

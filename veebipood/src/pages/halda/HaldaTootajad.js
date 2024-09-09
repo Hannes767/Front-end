@@ -1,5 +1,6 @@
 import React,{useRef, useState} from 'react'
 import tootajadFailist from "../../data/tootajad.json"
+import {Link} from "react-router-dom"
 
 function HaldaTootajad() {
    const [tootajad, muudaTootajaid] = useState(tootajadFailist.slice());
@@ -27,6 +28,9 @@ return (
        <div>
           {mitmes}. {tootaja}
            <button onClick={() => kustuta(mitmes)}>x</button>
+           <Link to= {"/muuda-tootaja/" + mitmes}>
+              <button>Muuda</button>
+           </Link>
        </div>)}
 
        
