@@ -38,13 +38,13 @@ function HaldaEsindused() {
         <input ref={aadressRef} type="text" /><br />
         <button onClick={lisa}>Lisa</button><br />
 
-        {keskused.map((keskus, index )=>
-            <div>
+        {keskused.map((keskus, index)=>
+            <div key={keskus.nimi}>
                {index}. {keskus.nimi} | {keskus.tel} | {keskus.aadr}
                 <button onClick={() => kustuta(index)}>x</button>
                 {/* App.js: muuda-esindus/:jrknr */}
                 <Link to={"/muuda-esindus/" + index}>                
-                <button>Muuda</button>
+                  <button>Muuda</button>
                 </Link>
             </div>)}
     </div>

@@ -1,11 +1,11 @@
 [
-    "Jüri",
-    "Mariell",
-    "Jaan",
-    "Leena",
-    "Mati",
-    "Kati",
-    "Voldemar",
-    "Aabram",
-    "Ülvi"
+    {"nimi": "Jüri", "amet": "autojuht"},
+    {"nimi": "Jaan", "amet": "laomees"},
+    {"nimi": "Leena", "amet": "raamatupidaja"},
+    {"nimi": "Mati", "amet": "logistik"},
+    {"nimi": "Kati", "amet": "personalispetsialist"},
+    {"nimi": "Voldemar", "amet": "ostujuht"},
+    {"nimi": "Aabram", "amet": "müügimees"},
+    {"nimi": "Ülvi", "amet": "sekretär"}
+    
 ]

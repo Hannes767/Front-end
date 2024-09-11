@@ -4,7 +4,9 @@ import {Link} from "react-router-dom"
 
 function HaldaTooted() {
   const [tooted, muudaTooted] = useState(tootedFailist.slice());
-  const tootedRef = useRef();
+  const markRef = useRef();
+  const mudelRef = useRef();
+  const aastaRef = useRef();
 
 const kustuta = (index) => {
    tootedFailist.splice(index,1);
@@ -12,7 +14,13 @@ const kustuta = (index) => {
 }
 
 const lisa = () => {
-   tootedFailist.push(tootedRef.current.value);
+   tootedFailist.push(
+      {
+         "mark": markRef.current.value,
+         "mudel": mudelRef.current.value,
+         "aasta": aastaRef.current.value,
+      }
+   );
    muudaTooted(tootedFailist.slice());
 
 }
@@ -20,14 +28,18 @@ const lisa = () => {
 
 return (
 <div>
-   <label>Toote nimetus</label><br />
-   <input ref={tootedRef} type="text" /><br />
+   <label>Auto mark</label><br />
+   <input ref={markRef} type="text" /><br />
+   <label>Auto mudel</label><br />
+   <input ref={mudelRef} type="text" /><br />
+   <label>Tootmisaasta</label><br />
+   <input ref={aastaRef} type="number" /><br />
    <div>Kokku: {tooted.length}</div>
    <button onClick={lisa}>Lisa</button><br /><br />
 
    {tooted.map((toode, jrknr)=>
        <div key={jrknr}>
-          {jrknr}. {toode}
+          {jrknr}. {toode.mark} {toode.mudel} : {toode.aasta}
            <button onClick={() => kustuta(jrknr)}>x</button>
            <Link to= {"/muuda-toode/" + jrknr}>
               <button>Muuda</button>

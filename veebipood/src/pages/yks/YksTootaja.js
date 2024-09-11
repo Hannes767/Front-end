@@ -12,14 +12,18 @@ function YksTootaja() {
 
   const vastus = tootajadFailist[index];
 
+  if (vastus === undefined) {
+    //kui on tingimused täidetud, siis siin  HTML väljakuvamine lõppeb
+  return <div>Töötajat ei leitud</div>
+  }
+
   return (
     <div>
       <div>
       <div>Järjekorranumber, mis on URLis: {index}</div>
-        <div>Töötaja, kellele klikiti: {vastus}</div>
-        <div>Jne mingid omadused...</div>
-        <div>Toote lisaja süsteemi: {}</div>
-    </div>
+        <div>Töötaja: {vastus.nimi}</div>    
+        <div>Amet: {vastus.amet}</div>    
+      </div>
 
     </div>
   )

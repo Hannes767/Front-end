@@ -4,7 +4,8 @@ import {Link} from "react-router-dom"
 
 function HaldaTootajad() {
    const [tootajad, muudaTootajaid] = useState(tootajadFailist.slice());
-   const tootajaRef = useRef();
+   const nimiRef = useRef();
+   const ametRef = useRef();
 
    const kustuta = (index) => {
       tootajadFailist.splice(index,1);
@@ -12,7 +13,12 @@ function HaldaTootajad() {
       }
 
    const lisa = () => {
-      tootajadFailist.push(tootajaRef.current.value);
+      tootajadFailist.push(
+         {
+            "nimi": nimiRef.current.value,
+            "amet": ametRef.current.value,
+         }
+      )
       muudaTootajaid(tootajadFailist.slice());
       }
 
@@ -20,13 +26,15 @@ function HaldaTootajad() {
 return (
 <div>
    <label>Töötaja nimi</label><br />
-   <input ref={tootajaRef} type="text" /><br />
+   <input ref={nimiRef} type="text" /><br />
+   <label>Töötaja amet</label><br />
+   <input ref={ametRef} type="text" /><br />
    <div>Kokku: {tootajad.length}</div>
    <button onClick={lisa}>Lisa</button><br /><br />
 
    {tootajad.map((tootaja, mitmes)=>
        <div>
-          {mitmes}. {tootaja}
+          {mitmes}. {tootaja.nimi} : {tootaja.amet}
            <button onClick={() => kustuta(mitmes)}>x</button>
            <Link to= {"/muuda-tootaja/" + mitmes}>
               <button>Muuda</button>
@@ -34,7 +42,7 @@ return (
        </div>)}
 
        
-   {tootajad.length > 0 && <button onClick={() => muudaTootajaid([])}>Tühjenda</button>}
+   {tootajad.length> 0 && <button onClick={() => muudaTootajaid([])}>Tühjenda</button>}
    <br/><br/>
 </div>
 )

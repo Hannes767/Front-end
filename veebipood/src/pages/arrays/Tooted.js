@@ -17,28 +17,28 @@ function Tooted() {
   }
 
   const sorteeriAZ = () => {
-    tooted.sort((a,b) => a.localeCompare(b, "et"));
+    tooted.sort((a,b) => a.mark.localeCompare(b.mark, "et"));
     muudaTooted(tooted.slice());
   }
 
   const sorteeriZA = () => {
-    tooted.sort((a,b) => b.localeCompare(a, "et"));
+    tooted.sort((a,b) => b.mark.localeCompare(a.mark, "et"));
     muudaTooted(tooted.slice());
 
   }
 
   const sorteeriTahedKasvavalt = () => {
-    tooted.sort((a,b) => a.length - b.length);
+    tooted.sort((a,b) => a.mark.length - b.mark.length);
     muudaTooted(tooted.slice());
   }
 
   const sorteeriTahedKahanevalt = () => {
-    tooted.sort((a,b) => b.length - a.length);
+    tooted.sort((a,b) => b.mark.length - a.mark.length);
     muudaTooted(tooted.slice());
   }
 
   const filtreeriAlgav = (taht) => {
-    const vastus = tootedFailist.filter(toode => toode.startsWith(taht));
+    const vastus = tootedFailist.filter(toode => toode.mark.startsWith(taht));
     muudaTooted(vastus);
   }
 
@@ -68,7 +68,7 @@ function Tooted() {
       </div>
         {tooted.map((toode, index )=> 
           <div key={index}>
-            {toode}
+            {toode.mark} {toode.mudel}
             <button onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi</button>
             <Link to={"/toode/" + index}>                        
                 <button>Vaata lähemalt</button>

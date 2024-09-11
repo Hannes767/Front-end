@@ -10,58 +10,58 @@ function Tootajad() {
 }
 
   const sorteeriAZ = () => {
-    tootajad.sort((a,b) => a.localeCompare(b, "et"));
+    tootajad.sort((a,b) => a.nimi.localeCompare(b.nimi, "et"));
     muudaTootajad(tootajad.slice());
 }
 
 const sorteeriZA = () => {
-    tootajad.sort((a,b) => b.localeCompare(a, "et"));
+    tootajad.sort((a,b) => b.nimi.localeCompare(a.nimi, "et"));
     muudaTootajad(tootajad.slice());
 
 }
 
 const sorteeriTahedKasvavalt = () => {
-    tootajad.sort((a,b) => a.length - b.length);
+    tootajad.sort((a,b) => a.nimi.length - b.nimi.length);
     muudaTootajad(tootajad.slice());
 }
 
 const sorteeriTahedKahanevalt = () => {
-    tootajad.sort((a,b) => b.length - a.length);
+    tootajad.sort((a,b) => b.nimi.length - a.nimi.length);
     muudaTootajad(tootajad.slice());
 }
 
 const sorteeriTeineTahtAZ = () => {
-    tootajad.sort((a,b) => a[1].localeCompare(b[1], "et"));
+    tootajad.sort((a,b) => a.nimi[1].localeCompare(b.nimi[1], "et"));
     muudaTootajad(tootajad.slice());
 }
 
 const filtreeriTahemarkeRohkemKui5 = () => {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.length >= 5);
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.length >= 5);
   muudaTootajad(vastus);
 }
 
 const filtreeriTahemarkeTapselt3 = () => {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.length === 3);
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.length === 3);
   muudaTootajad(vastus);
 }
 
 const filtreeriKesSisaldabIsLyhendit = () => {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.includes("ai"));
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.includes("ai"));
   muudaTootajad(vastus);
 }
 
 const filtreeriKelleEsimeneTahtM = () => {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.startsWith("M"));
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.startsWith("M"));
   muudaTootajad(vastus);
 }
 
 const filtreeriKellelOnNeljasTahtI = () => {
-  const vastus = tootajadFailist.filter(tootaja => tootaja[3] === "i");
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi[3] === "i");
   muudaTootajad(vastus);
 }
 
 const filtreeriPaarisarvTahti = () => {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.length % 2  === 0);
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.length % 2  === 0);
   muudaTootajad(vastus);
 }
 
@@ -76,16 +76,16 @@ const filtreeriPaarisarvTahti = () => {
         {tootajad.length > 0 && <button onClick={() => muudaTootajad([])}>Tühjenda</button>}
         <br/>
       </div>
-      <div>{tootajad.map((tootaja, index )=> 
-        <div key={index}>
-          {tootaja}
+      <div>{tootajad.map((tootaja, index)=> 
+        <div key={tootaja.nimi}>
+          {tootaja.nimi}: {tootaja.amet}
           <Link to={"/tootaja/" + index}>                        
             <button>Vaata lähemalt</button>
           </Link>
         </div>)}
       </div>
 
-        {tootajad.length === 0 && 
+        {tootajad.nimi === 0 && 
         <div>Töötajaid ei ole</div>}
 
       <button onClick={sorteeriAZ}>Sorteeri A-Z</button>

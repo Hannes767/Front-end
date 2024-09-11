@@ -12,14 +12,17 @@ function YksToode() {
   const vastus = tootedFailist[index];
   //järjekorranumbriga seotud näited
 
-
+  if (vastus === undefined) {
+    //kui on tingimused täidetud, siis siin  HTML väljakuvamine lõppeb
+  return <div>Autot ei leitud</div>
+  }
 
   return (
     <div>
       <div>Järjekorranumber, mis on URLis: {index}</div>
-        <div>Toode, millele klikiti: {vastus}</div>
-        <div>Jne mingid omadused...</div>
-        <div>Toote lisaja süsteemi: {}</div>
+        <div>Mark: {vastus.mark}</div>
+        <div>Mudel: {vastus.mudel}</div>
+        <div>Aasta: {vastus.aasta}</div>
     </div>
   )
 }

@@ -1,12 +1,12 @@
 [
-    "Audi",
-    "BMW",
-    "Skoda",
-    "Kia",
-    "Toyota",
-    "Mazda",
-    "Mercedes",
-    "Subaru",
-    "Citroen",
-    "Peugeot"
+    {"mark": "Audi", "mudel": "A4", "aasta": 1983},
+    {"mark": "BMW", "mudel": "320", "aasta": 2023},
+    {"mark": "Skoda", "mudel": "Rapid", "aasta": 2013},
+    {"mark": "Kia", "mudel": "Rio", "aasta": 2002},
+    {"mark": "Toyota", "mudel": "Auris", "aasta": 2013},
+    {"mark": "Mazda", "mudel": "3", "aasta": 2021},
+    {"mark": "Mercedes", "mudel": "E-klass", "aasta": 2001},
+    {"mark": "Subaru", "mudel": "Forester", "aasta": 2019},
+    {"mark": "Citroen", "mudel": "C4", "aasta": 2020},
+    {"mark": "Peugeot", "mudel": "307", "aasta": 1998}   
 ]

@@ -20,7 +20,7 @@ function SonajaArv() {
         <span>{tooteKogus} tk</span>
         <button onClick={() => muudaTootekogus (tooteKogus + 1)}>+</button>
         <br /><br />
-        <label>E-mail</label>
+        <label>Toode</label>
         <input ref={toodeRef} type="text" />
         <button onClick={() => muudaTootenimi(toodeRef.current.value)}>Lisa toode</button>
     </div>
