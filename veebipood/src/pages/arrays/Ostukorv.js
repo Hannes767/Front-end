@@ -2,20 +2,20 @@ import React, {useState} from 'react'
 import { Link } from "react-router-dom"
 import ostukorvFailist from "../../data/ostukorv.json"
 
-function Ostukorv() {
+function Ostukorv() { //lehele  tulles võetakse algväärtus useState sulgude seest eht ostukorvist, mitte failist, lähen ära kustub lehelt
   const [ostukorv, muudaOstukorv] = useState (ostukorvFailist.slice());
 
-  const lisaRedBull = () => {
+  const lisaPakiautomaat = () => {
     // muudaOstukorv(["Coca", "Fanta", "Sprite", "Red bull"])
-    ostukorvFailist.push("Red bull");
+    ostukorvFailist.push({"nimi":"Red bull", "hind": 3, "pilt": "pilt.jpg", "aktiivne": true});
     muudaOstukorv(ostukorvFailist.slice());
   }
 
-  const lisaVichy = () => {
-    // muudaOstukorv(["Coca", "Fanta", "Sprite", "Vichy"])
-    ostukorvFailist.push("Vichy");
-    muudaOstukorv(ostukorvFailist.slice());
-  }
+  // const lisaVichy = () => {
+  //   // muudaOstukorv(["Coca", "Fanta", "Sprite", "Vichy"])
+  //   ostukorvFailist.push("Vichy");
+  //   muudaOstukorv(ostukorvFailist.slice());
+  // }
     //saan kätte onClick abil
   const lisa = (uusToode) => {
     ostukorvFailist.push(uusToode);
@@ -32,16 +32,24 @@ function Ostukorv() {
     muudaOstukorv(ostukorvFailist.slice()); //alates 0st, lõpuni välja kustutab
   }
 
+  const arvutaHinnadKokku = () => {
+    let summa = 0;
+
+    ostukorv.forEach(toode => summa = summa + toode.hind);
+    
+    return summa;
+  }
+
   return (
     <div>
 
       <div>
         <div>Kokku: {ostukorv.length}</div>
-        <button onClick={lisaRedBull}>Lisa lõppu Red bull juurde</button>
-        <button onClick={lisaVichy}>Lisa lõppu Vichy juurde</button>
+        <button onClick={lisaPakiautomaat}>Lisa lõppu pakiautomaadi juurde</button>
+        {/* <button onClick={lisaVichy}>Lisa lõppu Vichy juurde</button> */}
         <div>{ostukorv.map((toode, index )=> 
           <div>
-            {index}. {toode} 
+            {index}. {toode.nimi} {toode.hind} {toode.pilt} {toode.aktiivne}
             <button onClick={() => lisa(toode)}>Lisa lõppu</button>
             <button onClick={() => kustuta(index)}>x</button>
           </div>)}
@@ -51,7 +59,9 @@ function Ostukorv() {
 
       </div>
 
-      <Link to="/avaleht">Mine avalehele</Link>         
+      <Link to="/avaleht">Mine avalehele</Link>  
+
+      <div>Kokku: {arvutaHinnadKokku()} €</div>       
         
         
     </div>

@@ -7,6 +7,7 @@ function HaldaTooted() {
   const markRef = useRef();
   const mudelRef = useRef();
   const aastaRef = useRef();
+  const hindRef = useRef();
 
 const kustuta = (index) => {
    tootedFailist.splice(index,1);
@@ -19,6 +20,7 @@ const lisa = () => {
          "mark": markRef.current.value,
          "mudel": mudelRef.current.value,
          "aasta": aastaRef.current.value,
+         "hind": hindRef.current.value
       }
    );
    muudaTooted(tootedFailist.slice());

@@ -5,6 +5,7 @@ import {Link} from "react-router-dom"
 function HaldaHinnad() {
     const [hinnad, muudaHinnad] = useState(hinnadJson.slice());
     const hindRef = useRef();
+    const otsinguRef = useRef();
 
 
     const kustuta = (index) => {
@@ -13,12 +14,21 @@ function HaldaHinnad() {
     }
 
     const lisa = () => {
-        hinnadJson.push(hindRef.current.value);
+        hinnadJson.push({"number": hindRef.current.value, "lisaja": "Peeter"});
         muudaHinnad(hinnadJson.slice());
     }
 
+    const otsiHindadest = () => {
+      const vastus = hinnadJson.filter(hind => String(hind.number).includes(otsinguRef.current.value));
+      muudaHinnad(vastus);
+    }
+        // includes ei saa numbrile teha, tuleb teha stringiks.
   return (
     <div>
+
+      <input type="text" ref={otsinguRef} onChange={otsiHindadest} />
+
+      <br /><br />
         <label >Hind</label><br />
         <input ref={hindRef} type="number" /><br />
         <button onClick={lisa}>Lisa</button>

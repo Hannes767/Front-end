@@ -65,10 +65,13 @@ function Tooted() {
         <div>Kokku: {tooted.length}</div>
         {tooted.length > 0 && <button onClick={() => muudaTooted([])}>Tühjenda</button>}
         <br/><br/>
+        
       </div>
+      
         {tooted.map((toode, index )=> 
-          <div key={index}>
-            {toode.mark} {toode.mudel}
+          <div key={index}> 
+            
+            {toode.mark} {toode.mudel} {toode.hind}
             <button onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi</button>
             <Link to={"/toode/" + index}>                        
                 <button>Vaata lähemalt</button>
@@ -99,6 +102,18 @@ function Tooted() {
           autoClose={4000}          
           theme="dark"
           />
+{/* [
+    {"mark": "Audi", "mudel": "A4", "aasta": 1983},
+    {"mark": "BMW", "mudel": "320", "aasta": 2023},
+    {"mark": "Skoda", "mudel": "Rapid", "aasta": 2013},
+    {"mark": "Kia", "mudel": "Rio", "aasta": 2002},
+    {"mark": "Toyota", "mudel": "Auris", "aasta": 2013},
+    {"mark": "Mazda", "mudel": "3", "aasta": 2021},
+    {"mark": "Mercedes", "mudel": "E-klass", "aasta": 2001},
+    {"mark": "Subaru", "mudel": "Forester", "aasta": 2019},
+    {"mark": "Citroen", "mudel": "C4", "aasta": 2020},
+    {"mark": "Peugeot", "mudel": "307", "aasta": 1998}   
+] */}
 
 
     </div>

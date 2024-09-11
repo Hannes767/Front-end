@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
+import ostukorvFailist from "../../data/ostukorv.json";
 
 //värvid
 //tumesinine - JavaScriptis liigitus, htlm liigitus
@@ -40,8 +41,16 @@ function Kinkekaart() {
           return; // funktsioon lõppeb
         }
 
+          // ostukorvFailist.push({"nimi":"Kinkekaart "+ kogus + "tk", "hind": summa * kogus + " eurot", "pilt": "pilt.jpg", "aktiivne": true});
+          ostukorvFailist.push({
+            //"nimi":"Kinkekaart "+ kogus + "tk"
+            "nimi": `Kinkekaart ${summa}€ - ${kogus} tk`,
+            "hind": summa * kogus + " eurot", 
+            "pilt": "pilt.jpg",
+            "aktiivne": true});
           toast.success("Ostukorvi lisatud!");
           // muudaSonum("Ostukorvi lisatud");
+          //back-tick, siia sisse saab muutujaid kirjutada sõnade vahele
       }
 
       const muudaShowEmail = () => {

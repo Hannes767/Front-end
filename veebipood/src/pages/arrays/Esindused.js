@@ -66,6 +66,18 @@ function Esindused() {
         muudaKeskused(vastus);
     }
 
+    const arvutaEsinduseTahedKokku = () => {
+        let summa = 0;
+        keskused.forEach(keskus => summa = summa + keskus.nimi.length);    
+        return summa;
+      }
+    
+    const arvutaEsinduseTelefonidKokku = () => {
+        let summa = 0;
+        keskused.forEach(keskus => summa = summa + Number(keskus.tel));    
+        return summa;
+      }
+
 
   return (
     <div>
@@ -117,6 +129,8 @@ function Esindused() {
         
         { linn === "Pärnu" && <div>Port Artur 2</div>}
 
+        <div>Tähed kokku: {arvutaEsinduseTahedKokku()} tk</div>
+        <div>{arvutaEsinduseTelefonidKokku()} tk</div>
 
     </div>
   )

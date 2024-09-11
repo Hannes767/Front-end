@@ -65,6 +65,18 @@ function Hinnad() {
     
   }
 
+  const arvutaHinnadKokku = () => {
+    let summa = 0;
+    hinnad.forEach(hind => summa = summa + hind.number);    
+    return summa;
+  }
+
+  const arvutaLisajaTahedKokku = () => {
+    let summa = 0;
+    hinnad.forEach(hind => summa = summa + hind.lisaja.length);    
+    return summa;
+  }
+
   return (
     <div>
       <button onClick={reset}>Reset</button>
@@ -112,6 +124,10 @@ function Hinnad() {
           </Link>
         </div>
       )}
+
+      <div>{arvutaHinnadKokku()} €</div>
+      <div>{arvutaLisajaTahedKokku()} tk</div>
+
     </div>
   )
 }

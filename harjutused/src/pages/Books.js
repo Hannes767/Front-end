@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 function Books() {
     const koopia = ["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Tõde ja õigus", "Nipernaadi", "Aabits", "Ahvide planeet"]
-    const [raamatud, muudaRaamatud] = useState (["The Great Gatsby", "War and Peace", "Hamlet", " Moby Dick", "Tõde ja õigus", "Nipernaadi", "Aabits", "Ahvide planeet"]);
+    const [raamatud, muudaRaamatud] = useState (["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Tõde ja õigus", "Nipernaadi", "Aabits", "Ahvide planeet"]);
     
     const reset = () => {
         muudaRaamatud(koopia.slice());
