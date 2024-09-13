@@ -2,8 +2,9 @@ import React, {useState} from 'react'
 import { Link } from "react-router-dom"
 
 function Books() {
-    const koopia = ["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Tõde ja õigus", "Nipernaadi", "Aabits", "Ahvide planeet"]
-    const [raamatud, muudaRaamatud] = useState (["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Tõde ja õigus", "Nipernaadi", "Aabits", "Ahvide planeet"]);
+    const koopia = ["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Tõde ja õigus", "Nipernaadi", "Aabits", "Ahvide planeet", "Acid"]
+    const [raamatud, muudaRaamatud] = useState (["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick",
+       "Tõde ja õigus", "Nipernaadi", "Aabits", "Ahvide planeet", "Acid"]);
     
     const reset = () => {
         muudaRaamatud(koopia.slice());
@@ -62,8 +63,8 @@ function Books() {
         muudaRaamatud(vastus);
       }
       
-      const filtreeriKelleEsimeneTahtM = () => {
-        const vastus = raamatud.filter(raamat => raamat.startsWith("M"));
+      const filtreeriKelleAlgavadThega = () => {
+        const vastus = raamatud.filter(raamat => raamat.startsWith("The"));
         muudaRaamatud(vastus);
       }
       
@@ -79,6 +80,16 @@ function Books() {
 
       const filtreeriKesSisaldabKeskelAndLyhendit = () => {
         const vastus = raamatud.filter(raamat => raamat.includes("and"));
+        muudaRaamatud(vastus);
+      }
+
+      const filtreeriKesSisaldabKolmeVoiRohkemSona = () => {
+        const vastus = raamatud.filter(raamat => raamat.split(" ").length >= 3);
+        muudaRaamatud(vastus);
+      }
+
+      const filtreeriKelleEelviimaneTahtonC = () => {
+        const vastus = raamatud.filter(raamat => raamat[raamat.length - 2].includes("c"));
         muudaRaamatud(vastus);
       }
       
@@ -115,10 +126,12 @@ return (
         <button onClick={filtreeriTahemarkeRohkemKui10}>Filtreeri kellel tähemärke rohkem kui 10</button>
         <button onClick={filtreeriTahemarkeVahemKui7}>Filtreeri kellel tähemärke vähem kui 7</button>
         <button onClick={filtreeriKesSisaldabTheLyhendit}>Filtreeri kes sisaldab "The" lühendit</button>
-        <button onClick={filtreeriKelleEsimeneTahtM}>Filtreeri kellel on esimene täht M</button>
+        <button onClick={filtreeriKelleAlgavadThega}>Filtreeri sõnad, mis algavad "The" lühendiga</button>
         <button onClick={filtreeriKellelOnNeljasTahtI}>Filtreeri kellel on neljas täht "i"</button>
         <button onClick={filtreeriPaarisarvTahti}>Filtreeri kellel on paarisarv tähti</button>
         <button onClick={filtreeriKesSisaldabKeskelAndLyhendit}>Filtreeri kes sisaldab keskel "and" lühendit</button>
+        <button onClick={filtreeriKesSisaldabKolmeVoiRohkemSona}>Filtreeri kes sisaldab kolme või rohkem sõna</button>
+        <button onClick={filtreeriKelleEelviimaneTahtonC}>Filtreeri kellel eelviimane täht on C</button>
 
     </div>
   )

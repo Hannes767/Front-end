@@ -14,6 +14,7 @@ import Toesusvaartused from './pages/Toesusvaartused';
 import AlgabKindlaTahemargiga from './pages/AlgabKindlaTahemargiga';
 import PikkuseKontroll from './pages/PikkuseKontroll';
 import Books from './pages/Books';
+import Numbrid from './pages/Numbrid';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
           <Route path="/algabkindlatahemargiga" element={<AlgabKindlaTahemargiga/>}/>
           <Route path="/pikkusekontroll" element={<PikkuseKontroll/>}/>
           <Route path="/books" element={<Books/>}/>
+          <Route path="/numbrid" element={<Numbrid/>}/>
+
       </Routes>
     </div>
   );

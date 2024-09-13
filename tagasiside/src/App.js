@@ -1,24 +1,19 @@
 
 import './App.css';
-import {Route, Routes, Link} from "react-router-dom"
+import {Route, Routes} from "react-router-dom"
 import Tagasiside from './pages/Tagasiside';
+import TagasisideAndjad from './pages/TagasisideAndjad';
+import Avaleht from './pages/Avaleht';
 
 function App() {
   return (
-    <div className="App">
-      
-
-        <Link to="/">
-            <button>Avaleht</button>
-        </Link>
-
-        <Link to="/tagasiside">
-            <button>Tagasiside</button>
-        </Link>
+    <div className="App">        
 
       <Routes>
-          <Route path="/" element={<div>Tere</div>}/>
+          {/* <Route path="/" element={<div>Tere</div>}/> */}
+          <Route path="/" element={<Avaleht/>}/>
           <Route path="/tagasiside" element={<Tagasiside/>}/>
+          <Route path="/tagasiside-andjad" element={<TagasisideAndjad/>}/>
           
       </Routes>
     </div>
