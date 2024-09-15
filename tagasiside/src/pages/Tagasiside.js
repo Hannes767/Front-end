@@ -7,8 +7,7 @@ function Tagasiside() {
 
     const lisa = () => {
       tagasided.push(tagasisideRef.current.value);
-      muudaTagasisided(tagasided.slice());
-   
+      muudaTagasisided(tagasided.slice());   
    }
 
    const kustuta = (index) => {
