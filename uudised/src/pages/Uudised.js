@@ -1,9 +1,15 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 
 function Uudised() {
-  return ( <div>
-     <div>See on uudiste leht, nähtav localhost:3000/uudsed aadressil</div>
-     <div>Ühtegi uudist hetkel pole. Lisame õige pea!</div>
+  return ( 
+    <div>
+      <Link to="/">
+         <button>Uudised</button>
+      </Link>
+      <br /><br />
+      
+      <div>Ühtegi uudist hetkel pole. Lisame õige pea!</div>
     </div>
   )
 }

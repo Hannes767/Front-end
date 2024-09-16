@@ -18,10 +18,7 @@ import Numbrid from './pages/Numbrid';
 
 function App() {
   return (
-    <div className="App">
-
-        
-      
+    <div className="App">      
 
       <Routes>
           <Route path="/" element={<Avaleht/>}/>

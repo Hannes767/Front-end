@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {Link} from "react-router-dom"
 
 function Kontakt() {
   const [n2itaTelKristiine, muudaN2itaTelKristiine] = useState(false);
@@ -7,10 +8,12 @@ function Kontakt() {
 
 
 
-  return ( <div>
-        <div>See on kontaktide leht, nähtav localhost:3000/kontakt aadressil</div>
-        <div>Võta meiega ühendust:</div>
-        <br />
+  return ( 
+    <div>
+        <Link to="/">
+            <button>Kontakt</button>
+        </Link>
+        <br /><br />
         <div className= {n2itaTelKristiine === true ? "valitud" : undefined} onClick={() => muudaN2itaTelKristiine(!n2itaTelKristiine)} >Kristiine keskus</div>
         {n2itaTelKristiine && <div className='valitud'>458634262</div>}
         <div className= {n2itaTelKristiine === true ? "valitud" : undefined}>Endla 45</div>
