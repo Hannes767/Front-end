@@ -8,16 +8,20 @@ function Avaleht() {
         {eesnimi: "Roo", perenimi: "Kangaroo", elukoht: "Hundred Acre Wood"},        
     ]
 
-    const kuvaNimi = (tegelane) => {
-        console.log(tegelane.eesnimi);
-    } 
+    const [klikitudNimi, uuendaKlikitudNimi] = useState("");
 
-    const [klikitudNimi, uuendaKlikitudNimi] = useState();
+    const kuvaNimi =(tegelane) => {
+        console.log(tegelane.eesnimi);
+        uuendaKlikitudNimi(tegelane.eesnimi);
+    }  
+    
+
 
   return (
     <div>
+        {klikitudNimi !=="" && <div>Klikkisid tegelase {klikitudNimi} peal</div>}
       {tegelased.map(tegelane =>
-      <div>
+      <div key={tegelane.eesnimi}>
         <div>{tegelane.eesnimi}</div>
         <div>{tegelane.perenimi}</div>
         <div>{tegelane.elukoht}</div>
