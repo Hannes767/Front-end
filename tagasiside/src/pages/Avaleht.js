@@ -15,6 +15,15 @@ function Avaleht() {
         <Link to="/tagasiside-andjad">
             <button>Tagasiside andjad</button>
         </Link> 
+
+        <Link to="/tegevused">
+            <button>Tegevused</button>
+        </Link>
+
+        <Link to="/kasutajad">
+            <button>Vaata kasutajad</button>
+        </Link>
+
     </div>
   )
 }
