@@ -1,8 +1,12 @@
 [
-    {"nimi": "BMW", "hind": 35000, "pilt": "URL.jpg", "aktiivne": true},
-    {"nimi": "Bentley", "hind": 85000, "pilt": "URL.jpg", "aktiivne": true},
-    {"nimi": "Nobe", "hind": 123000, "pilt": "URL.jpg", "aktiivne": true},
-    {"nimi": "Nissan", "hind": 90000, "pilt": "URL.jpg", "aktiivne": true},
-    {"nimi": "Toyota", "hind": 55000, "pilt": "URL.jpg", "aktiivne": true},
-    {"nimi": "Tesla", "hind": 167000, "pilt": "URL.jpg", "aktiivne": true}
+    {"mark": "Audi", "mudel": "A4", "aasta": 1983, "hind": 1500, "pilt": "https://eu.amcdn.co.za/cars/audi-a4-1997-id-88584893-type-main.jpg", "aktiivne": true},
+    {"mark": "BMW", "mudel": "320", "aasta": 2023, "hind": 53000, "pilt": "https://content.api.news/v3/images/bin/bad661b374f7730fbbd29dc9b2f6ea3f?width=1024", "aktiivne": true},
+    {"mark": "Skoda", "mudel": "Rapid", "aasta": 2013, "hind": 2500, "pilt": "https://www.aa.co.nz/assets/motoring/car-reviews/skoda/Rapid/_resampled/FillWyIxMjgwIiwiNzIwIl0/Skoda-Rapid-2013-1.JPG?m=1533781272", "aktiivne": true},
+    {"mark": "Kia", "mudel": "Rio", "aasta": 2002, "hind": 500, "pilt": "https://platform.cstatic-images.com/xlarge/in/v2/stock_photos/b3f0fbbc-a7cb-47ee-a54d-d698e959e1ac/3d862899-5cb5-41ed-a1cc-66e01c3e59cf.png", "aktiivne": true},
+    {"mark": "Toyota", "mudel": "Auris", "aasta": 2013, "hind": 3200, "pilt": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTl9cR8EaKsqPcsBO1G6W0Hg8TYeOLXcblsQ&s", "aktiivne": true},
+    {"mark": "Mazda", "mudel": "3", "aasta": 2021, "hind": 13000, "pilt": "https://www.motortrend.com/uploads/sites/11/2020/11/2021-Mazda3-25T-front-view-01.jpg", "aktiivne": true},
+    {"mark": "Mercedes", "mudel": "E-klass", "aasta": 2001, "hind": 2450, "pilt": "https://autotraderau-res.cloudinary.com/image/upload/t_gl/v1/glasses/BFDMwUkN.jpg", "aktiivne": true},
+    {"mark": "Subaru", "mudel": "Forester", "aasta": 2019, "hind": 19000, "pilt": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ5HhN1qYjF9wWnmLFAC0-y32v_0HMA2qlrA&s", "aktiivne": true},
+    {"mark": "Citroen", "mudel": "C4", "aasta": 2020, "hind": 15000, "pilt": "https://www.automaniac.org/resources/images/variant/2336/2020_citroen_c4.jpeg", "aktiivne": true},
+    {"mark": "Peugeot", "mudel": "307", "aasta": 1998, "hind": 800, "pilt": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/2002_Peugeot_307_Rapier_16V_1.6_Front.jpg/1200px-2002_Peugeot_307_Rapier_16V_1.6_Front.jpg", "aktiivne": true}   
 ]

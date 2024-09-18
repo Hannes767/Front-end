@@ -6,6 +6,7 @@ function HaldaTootajad() {
    const [tootajad, muudaTootajaid] = useState(tootajadFailist.slice());
    const nimiRef = useRef();
    const ametRef = useRef();
+   const otsinguRef = useRef();
 
    const kustuta = (index) => {
       tootajadFailist.splice(index,1);
@@ -22,9 +23,16 @@ function HaldaTootajad() {
       muudaTootajaid(tootajadFailist.slice());
       }
 
+      const otsiTootajaid = () => {
+         const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.includes(otsinguRef.current.value));
+         muudaTootajaid(vastus);
+       }
+
 
 return (
 <div>
+   <input ref={otsinguRef} onChange={otsiTootajaid} type="text" />
+   <br /><br />
    <label>Töötaja nimi</label><br />
    <input ref={nimiRef} type="text" /><br />
    <label>Töötaja amet</label><br />

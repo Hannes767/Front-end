@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Link } from "react-router-dom"
 import ostukorvFailist from "../../data/ostukorv.json"
 import tootedFailist from "../../data/tooted.json"
@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function Tooted() {
   const [tooted, muudaTooted] = useState (tootedFailist.slice());
+  const otsinguRef = useRef();
   const reset = () => {
     muudaTooted (tootedFailist.slice());
   }
@@ -57,8 +58,14 @@ function Tooted() {
   //   muudaTooted(vastus);
   // }
 
+  const otsiTooted = () => {
+    const vastus = tootedFailist.filter(toode => toode.mark.includes(otsinguRef.current.value));
+    muudaTooted(vastus);
+  }
+
   return (
     <div>
+      <input ref={otsinguRef} onChange={otsiTooted} type="text" />
       <button onClick={reset}>Reset</button>
       <br /><br />
       <div>
@@ -69,10 +76,13 @@ function Tooted() {
       </div>
       
         {tooted.map((toode, index )=> 
-          <div key={index}> 
-            
-            {toode.mark} {toode.mudel} {toode.hind}
+          <div key={index}>             
+            {toode.mark} {} {toode.mudel} {}
+            {toode.aasta}: {toode.hind} eurot {}
+            <img style={{width: "100px"}} src={toode.pilt} alt="" /> {}
+            {toode.aktiivne}
             <button onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi</button>
+
             <Link to={"/toode/" + index}>                        
                 <button>Vaata lähemalt</button>
             </Link>

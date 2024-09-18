@@ -4,6 +4,7 @@ import kasutajadFail from "../kasutajad.json"
 
 function Kasutajad() {
   const [kasutajad, uuendaKasutajad] = useState(kasutajadFail);
+  const [lucioIndex, setLucioIndex] = useState(null);
 
   const allBack = () => {
     uuendaKasutajad(kasutajadFail);
@@ -23,6 +24,7 @@ function Kasutajad() {
   const findIndexLucio = () => {
     const index = kasutajad.findIndex(user => user.email === "Lucio_Hettinger@annie.ca");
     console.log(index);
+    setLucioIndex(index); // Uuenda Lucio indeksi state'i
   }
 
   return (
@@ -34,7 +36,9 @@ function Kasutajad() {
       <div>{kasutajad.length}</div>      
       <button onClick={() => allBack()}>Algseis</button>
       <button onClick={() => filterName()}>Kasutaja username pikkus on suurem-võrdne 10</button>
-      <button onClick={() => findIndexLucio()}>Lucio index on: </button>
+      <button onClick={() => findIndexLucio()}>Lucio index on: {lucioIndex}</button>
+      {lucioIndex !== null && <div>Lucio indeks: {lucioIndex}</div>} {/* Kuvab Lucio indeksi, kui see on leitud */}
+
 
       <br /><br />
       <div>{kasutajad.map(kasutaja =>

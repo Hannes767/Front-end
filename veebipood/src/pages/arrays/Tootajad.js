@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Link } from "react-router-dom"
 import tootajadFailist from "../../data/tootajad.json"
 
 
 function Tootajad() {
   const [tootajad, muudaTootajad] = useState (tootajadFailist.slice());
+  const otsinguRef = useRef();
+
   const reset = () => {
     muudaTootajad (tootajadFailist.slice());
 }
@@ -65,10 +67,16 @@ const filtreeriPaarisarvTahti = () => {
   muudaTootajad(vastus);
 }
 
+const otsiTootajad = () => {
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.includes(otsinguRef.current.value));
+  muudaTootajad(vastus);
+}
 
 
   return (
     <div>
+      <input ref={otsinguRef} onChange={otsiTootajad} type="text" />
+      <br /><br />
       <button onClick={reset}>Reset</button>
       <br /><br />
       <div>

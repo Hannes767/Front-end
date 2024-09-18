@@ -44,8 +44,8 @@ function Kinkekaart() {
           // ostukorvFailist.push({"nimi":"Kinkekaart "+ kogus + "tk", "hind": summa * kogus + " eurot", "pilt": "pilt.jpg", "aktiivne": true});
           ostukorvFailist.push({
             //"nimi":"Kinkekaart "+ kogus + "tk"
-            "nimi": `Kinkekaart ${summa}€ - ${kogus} tk`,
-            "hind": summa * kogus + " eurot", 
+            "mark": `Kinkekaart ${summa}€ - ${kogus} tk`,
+            "hind": summa * kogus, 
             "pilt": "pilt.jpg",
             "aktiivne": true});
           toast.success("Ostukorvi lisatud!");
@@ -57,7 +57,7 @@ function Kinkekaart() {
         setShowEmail(showEmailRef.current.checked);//checkboxist lugemine
       }
     
-
+      
 
   return (
     <div>

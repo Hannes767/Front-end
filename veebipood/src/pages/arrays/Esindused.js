@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import {Link} from "react-router-dom"
 import keskusedFailist from "../../data/keskused.json"
 
@@ -9,6 +9,8 @@ function Esindused() {
     const reset = () => {
         muudaKeskused (keskusedFailist.slice());
     }
+    const otsinguRef = useRef();
+
 
     //localeCompare kui on vaja sõnu ja numbreid  sortida, objekte ei saa
 
@@ -78,9 +80,17 @@ function Esindused() {
         return summa;
       }
 
+      const otsiEsindustest = () => {
+        const vastus = keskusedFailist.filter(keskus => keskus.nimi.includes(otsinguRef.current.value));
+        muudaKeskused(vastus);
+      }
+
 
   return (
     <div>
+        <input ref={otsinguRef} onChange={otsiEsindustest} type="text" />
+        <br /><br />
+
         <div>Hetkel on aktiivne linn: {linn}</div>
         <button className={linn ==="Tallinn" ? 'linn-aktiivne' : "linn"} onClick={ () =>  muudaLinn("Tallinn")}>Tallinn</button>
         <button className={linn ==="Tartu" ? 'linn-aktiivne' : "linn"} onClick={ () =>  muudaLinn("Tartu")}>Tartu</button>

@@ -8,6 +8,7 @@ function HaldaTooted() {
   const mudelRef = useRef();
   const aastaRef = useRef();
   const hindRef = useRef();
+  const otsinguRef = useRef();
 
 const kustuta = (index) => {
    tootedFailist.splice(index,1);
@@ -27,9 +28,16 @@ const lisa = () => {
 
 }
 
+const otsiTooted = () => {
+   const vastus = tootedFailist.filter(toode => toode.mark.includes(otsinguRef.current.value));
+   muudaTooted(vastus);
+ }
+
 
 return (
 <div>
+   <input ref={otsinguRef} onChange={otsiTooted} type="text" />
+   <br /><br />
    <label>Auto mark</label><br />
    <input ref={markRef} type="text" /><br />
    <label>Auto mudel</label><br />

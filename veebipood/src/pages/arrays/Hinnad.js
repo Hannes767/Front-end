@@ -5,6 +5,7 @@ import {Link} from "react-router-dom"
 function Hinnad() {
   const [hinnad, muudaHinnad] = useState(hinnadFailist.slice())
   const hindRef = useRef();
+  const otsinguRef = useRef();
 
   //mitu  tk välja näidatakse
   // tühjendamine
@@ -77,8 +78,15 @@ function Hinnad() {
     return summa;
   }
 
-  return (
+  const otsiHindadest = () => {
+    const vastus = hinnadFailist.filter(hind => String(hind.number).includes(otsinguRef.current.value));
+    muudaHinnad(vastus);
+  }
+
+  return (    
     <div>
+      <input ref={otsinguRef} onChange={otsiHindadest} type="text" />
+      <br /><br />
       <button onClick={reset}>Reset</button>
       <br /><br />
 

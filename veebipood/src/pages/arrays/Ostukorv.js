@@ -7,7 +7,7 @@ function Ostukorv() { //lehele  tulles võetakse algväärtus useState sulgude s
 
   const lisaPakiautomaat = () => {
     // muudaOstukorv(["Coca", "Fanta", "Sprite", "Red bull"])
-    ostukorvFailist.push({"nimi":"Red bull", "hind": 3, "pilt": "pilt.jpg", "aktiivne": true});
+    ostukorvFailist.push({"mark":"Red bull", "hind": 3, "pilt": "pilt.jpg", "aktiivne": true});
     muudaOstukorv(ostukorvFailist.slice());
   }
 
@@ -49,7 +49,9 @@ function Ostukorv() { //lehele  tulles võetakse algväärtus useState sulgude s
         {/* <button onClick={lisaVichy}>Lisa lõppu Vichy juurde</button> */}
         <div>{ostukorv.map((toode, index )=> 
           <div>
-            {index}. {toode.nimi} {toode.hind} {toode.pilt} {toode.aktiivne}
+            {index}. {toode.mark} {toode.mudel} {toode.hind}
+            <img style={{width: "100px"}} src={toode.pilt} alt="" /> {}
+             {toode.aktiivne}
             <button onClick={() => lisa(toode)}>Lisa lõppu</button>
             <button onClick={() => kustuta(index)}>x</button>
           </div>)}
