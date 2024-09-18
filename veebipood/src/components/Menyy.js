@@ -1,23 +1,29 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import { useTranslation } from 'react-i18next';
 
 function Menyy() {
+  const { t, i18n } = useTranslation();
+
   return (
     <div>
-        <Link to="avaleht">
-      <img className="pilt" src="https://estonia.ee/wp-content/uploads/nobe_netist_4-1800x650.jpg" alt="" />
+      <Link to="avaleht">
+        <img className="pilt" src="https://estonia.ee/wp-content/uploads/nobe_netist_4-1800x650.jpg" alt="" />
       </Link>
 
+      <button onClick={() => i18n.changeLanguage("et")}>EST</button>
+      <button onClick={() => i18n.changeLanguage("en")}>ENG</button>
+
       <Link to="kinkekaart">
-      <button className="nupp">Kinkekaart</button>
+        <button className="nupp">{t("nav.giftcard")}</button>
       </Link>
 
       <Link to="esindused">
-      <button className="nupp">Esindused</button>
+        <button className="nupp">{t("nav.shops")}</button>
       </Link>
 
       <Link to="lisa-toode">
-      <button className="nupp">Lisa uus toode</button>
+        <button className="nupp">Lisa uus toode</button>
       </Link>
 
       <Link to="ostukorv">

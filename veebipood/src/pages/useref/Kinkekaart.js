@@ -26,6 +26,16 @@ function Kinkekaart() {
         if (emailViide.current === undefined){
           //if (showEmailRef.current.checked === false)
             toast.info("Lisasid ostukorvi, aga ilma e-mailita")
+          ostukorvFailist.push({
+            //"nimi":"Kinkekaart "+ kogus + "tk"
+            "mark": `Kinkekaart ${summa}€ - ${kogus} tk`,
+            "hind": summa * kogus, 
+            "pilt": "pilt.jpg",
+            "aktiivne": true});
+          toast.success("Ostukorvi lisatud!");
+          // muudaSonum("Ostukorvi lisatud");
+          //back-tick, siia sisse saab muutujaid kirjutada sõnade vahele
+      
           return;
         }
 

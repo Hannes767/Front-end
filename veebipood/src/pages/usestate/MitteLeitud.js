@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import Palgakalkulaator from '../../components/Palgakalkulaator'
 import Kalkulaator from '../../components/Kalkulaator'
+import { useTranslation } from 'react-i18next';
 
 function MitteLeitud() {
   const [kalk, muudaKalk] = useState("palk");
+  const { t } = useTranslation();
+
+  
 
   return (
     <div>
     <div>Lehte ei leitud</div>
-    <div>Senimaani kuni õigele lehele lähed, arvta oma palk:</div>
+    <h1>{t('page-not-found')}</h1>
+    <div>{t("calculate-salary")}</div>
 
 
     {kalk === "palk" && 

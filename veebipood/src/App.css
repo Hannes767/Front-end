@@ -82,3 +82,14 @@ table {
 .kalkulaator td:active {
   background-color: lightgray;
 }
+
+.halda th {
+  background-color: lightgray;
+}
+
+.pilt-mitteaktiivne {
+  height: 100px;
+  border-radius: 10px;
+  filter: grayscale(100%);
+  opacity: 0.5;
+}

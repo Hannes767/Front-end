@@ -79,9 +79,8 @@ function Tooted() {
           <div key={index}>             
             {toode.mark} {} {toode.mudel} {}
             {toode.aasta}: {toode.hind} eurot {}
-            <img style={{width: "100px"}} src={toode.pilt} alt="" /> {}
-            {toode.aktiivne}
-            <button onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi</button>
+            <img className={toode.aktiivne ? "pilt": "pilt-mitteaktiivne"} src={toode.pilt} alt="" /> {}
+            {toode.aktiivne  && <button onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi</button>}
 
             <Link to={"/toode/" + index}>                        
                 <button>Vaata lähemalt</button>

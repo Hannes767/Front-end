@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { ContactUs } from '../../components/Email';
 
 function Avaleht() {
   const [kogus, muudaKogus] = useState(0);
@@ -22,6 +23,10 @@ function nulli() {
 
   return (
     <div>
+      <br />
+      <div>Anna meile tagasisidet</div>
+      <ContactUs/>
+      <br /><br />
 
       <div>{laigitud === true && <img src='/laigitud.svg' alt=""/>}</div>
       <div>{laigitud === false && <img src='/mittelaigitud.svg' alt=""/>}</div>
