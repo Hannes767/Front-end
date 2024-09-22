@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
-import tegevusteFail from "../tegevused.json"
+import tegevusteFail from "../tegevused2.json"
 
 function Tegevused() {
     const [tegevused, uuendaTegevused] = useState(tegevusteFail);
@@ -10,8 +10,38 @@ function Tegevused() {
         uuendaTegevused(vastus);
     }
 
+    const n2itaKasutajaKaks = () => {
+      const vastus = tegevused.filter(element => element.userId === 2);
+      uuendaTegevused(vastus);
+    }
+
+    const n2itaKasutajaKolm = () => {
+      const vastus = tegevused.filter(element => element.userId === 3);
+      uuendaTegevused(vastus);
+    }
+
+    const n2itaValmisTegevused = () => {
+      const vastus = tegevused.filter(element => element.completed === true);
+      uuendaTegevused(vastus);
+    }
+
+    const n2itaMitteValmisTegevused = () => {
+      const vastus = tegevused.filter(element => element.completed === false);
+      uuendaTegevused(vastus);
+    }
+
+    const n2itaSgaAlgavadTegevused = () => {
+      const vastus = tegevused.filter(element => element.title.startsWith("s"));
+      uuendaTegevused(vastus);
+    }
+
+    const n2itaTahemarkeRohkemKui20 = () => {
+      const vastus = tegevused.filter(element => element.title.length > 20);
+      uuendaTegevused(vastus);
+    }
+
     const n2itaK6iki = () => {
-        uuendaTegevused(tegevusteFail);
+      uuendaTegevused(tegevusteFail);
     }
 
   return (
@@ -20,14 +50,14 @@ function Tegevused() {
             <button>Tegevused</button>
       </Link>
 
-      <div>Näita kogu tegevuse arvu .length abil</div>
-      <button onClick={() => n2itaKasutajaYks()}>Kuva kõik kasutaja ID 1 tegevused</button>
-      <button>Kuva kõik kasutaja ID 2 tegevused</button>
-      <button>Kuva kõik kasutaja ID 3 tegevused</button>
-      <button>Kuva kõik valmis tegevused</button>
-      <button>Kuva kõik mittevalmis tegevused</button>
-      <button>Kuva kõik "t" algavad tegevused</button>
-      <button>Kuva tegevused, millel on tähemärke rohkem kui 20</button>
+      <div>Tegevuste arv: {tegevused.length}</div>
+      <button onClick={n2itaKasutajaYks}>Kuva kõik kasutaja ID 1 tegevused</button>
+      <button onClick={n2itaKasutajaKaks}>Kuva kõik kasutaja ID 2 tegevused</button>
+      <button onClick={n2itaKasutajaKolm}>Kuva kõik kasutaja ID 3 tegevused</button>
+      <button onClick={() => n2itaValmisTegevused()}>Kuva kõik valmis tegevused</button>
+      <button onClick={() => n2itaMitteValmisTegevused()}>Kuva kõik mittevalmis tegevused</button>
+      <button onClick={n2itaSgaAlgavadTegevused}>Kuva kõik "s" algavad tegevused</button>
+      <button onClick={n2itaTahemarkeRohkemKui20}>Kuva tegevused, millel on tähemärke rohkem kui 20</button>
       <button onClick={() => n2itaK6iki()}>Kuva kõik tegevused tagasi</button>
 
       {tegevused.map(element =>
@@ -35,7 +65,7 @@ function Tegevused() {
             <div>{element.userId}</div>
             <div>{element.id}</div>
             <div>{element.title}</div>
-            <div>{element.completed}</div><br />
+            <div>{element.completed ? "Valmis" : "Mittevalmis"}</div><br />
         </div>
       )}
     </div>
