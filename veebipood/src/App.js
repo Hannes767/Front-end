@@ -7,7 +7,7 @@ import LisaToode from './pages/useref/LisaToode';
 import Ostukorv from './pages/arrays/Ostukorv';
 import Kinkekaart from './pages/useref/Kinkekaart';
 import MitteLeitud from './pages/usestate/MitteLeitud';
-import Menyy from './components/Menyy';
+// import Menyy from './components/Menyy';
 import Seaded from './pages/usestate/Seaded';
 import Profiil from './pages/useref/Profiil';
 import LogiSisse from './pages/useref/LogiSisse';
@@ -28,6 +28,9 @@ import MuudaEsindus from './pages/muuda/MuudaEsindus';
 import MuudaHind from './pages/muuda/MuudaHind';
 import MuudaToode from './pages/muuda/MuudaToode';
 import MuudaTootaja from './pages/muuda/MuudaTootaja';
+import Meny from './components/Meny';
+import AdminHalda from './pages/halda/AdminHalda';
+import Shops from './pages/usestate/Shops';
 
 
 
@@ -35,7 +38,7 @@ function App() {
   return (
     <div className="App">
 
-      <Menyy/>
+      <Meny/>
 
       <Routes>
       <Route path='' element={<Navigate to="avaleht"/>  }/>
@@ -68,6 +71,9 @@ function App() {
       <Route path="muuda-hind/:index" element={<MuudaHind/>}/>
       <Route path="muuda-toode/:index" element={<MuudaToode/>}/>
       <Route path="muuda-tootaja/:index" element={<MuudaTootaja/>}/>
+
+      <Route path="admin" element={<AdminHalda/>}/>
+      <Route path="shops" element={<Shops/>}/>
 
       </Routes>
     </div> 

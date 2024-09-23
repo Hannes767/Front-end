@@ -4,10 +4,10 @@ import {Link} from "react-router-dom"
 
 function HaldaTooted() {
   const [tooted, muudaTooted] = useState(tootedFailist.slice());
-  const markRef = useRef();
-  const mudelRef = useRef();
-  const aastaRef = useRef();
-  const hindRef = useRef();
+//   const markRef = useRef();
+//   const mudelRef = useRef();
+//   const aastaRef = useRef();
+//   const hindRef = useRef();
   const otsinguRef = useRef();
 
 const kustuta = (index) => {
@@ -15,18 +15,18 @@ const kustuta = (index) => {
    muudaTooted(tootedFailist.slice());
 }
 
-const lisa = () => {
-   tootedFailist.push(
-      {
-         "mark": markRef.current.value,
-         "mudel": mudelRef.current.value,
-         "aasta": aastaRef.current.value,
-         "hind": hindRef.current.value
-      }
-   );
-   muudaTooted(tootedFailist.slice());
+// const lisa = () => {
+//    tootedFailist.push(
+//       {
+//          "mark": markRef.current.value,
+//          "mudel": mudelRef.current.value,
+//          "aasta": aastaRef.current.value,
+//          "hind": hindRef.current.value
+//       }
+//    );
+//    muudaTooted(tootedFailist.slice());
 
-}
+// }
 
 const otsiTooted = () => {
    const vastus = tootedFailist.filter(toode => toode.mark.includes(otsinguRef.current.value));
@@ -38,14 +38,14 @@ return (
 <div>
    <input ref={otsinguRef} onChange={otsiTooted} type="text" />
    <br /><br />
-   <label>Auto mark</label><br />
+   {/* <label>Auto mark</label><br />
    <input ref={markRef} type="text" /><br />
    <label>Auto mudel</label><br />
    <input ref={mudelRef} type="text" /><br />
    <label>Tootmisaasta</label><br />
    <input ref={aastaRef} type="number" /><br />
    <div>Kokku: {tooted.length}</div>
-   <button onClick={lisa}>Lisa</button><br /><br />
+   <button onClick={lisa}>Lisa</button><br /><br /> */}
 
    {tooted.map((toode, jrknr)=>
        <div key={jrknr}>

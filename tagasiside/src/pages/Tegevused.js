@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
-import tegevusteFail from "../tegevused2.json"
+import tegevusteFail from "../tegevused.json"
 
 function Tegevused() {
     const [tegevused, uuendaTegevused] = useState(tegevusteFail);

@@ -36,6 +36,7 @@ function Tooted() {
   const sorteeriTahedKahanevalt = () => {
     tooted.sort((a,b) => b.mark.length - a.mark.length);
     muudaTooted(tooted.slice());
+    // muudaTooted([...tooted]);
   }
 
   const filtreeriAlgav = (taht) => {
@@ -43,6 +44,25 @@ function Tooted() {
     muudaTooted(vastus);
   }
 
+  // const muudaKoigiNimiSuureks = () => {
+  //   const vastus = tootedFailist.map(toode => ({
+  //   mark: toode.mark.toUpperCase(),
+  //   mudel: toode.mudel,
+  //   aasta: toode.aasta,
+  //   hind: toode.hind,
+  //   pilt: toode.pilt,
+  //   aktiivne: toode.aktiivne
+  //   }));
+  //   muudaTooted(vastus);
+  // }
+
+  const muudaKoigiNimiSuureks = () => {
+    const vastus = tootedFailist.map(toode => ({
+      ...toode,
+    mark: toode.mark.toUpperCase(),    
+    }));
+    muudaTooted(vastus);
+  }
   // const filtreeriKelleEsimeneTahtB = () => {
   //   const vastus = tootedFailist.filter(toode => toode.startsWith("B"));
   //   muudaTooted(vastus);
@@ -92,6 +112,7 @@ function Tooted() {
         {tooted.length === 0 && <div>Tooteid ei ole</div>}
 
       <br />
+      <button onClick={muudaKoigiNimiSuureks}>Muuda kõigil nimi suurteks tähtedeks</button>
       <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
       <button onClick={sorteeriZA}>Sorteeri Z-A</button>
       <button onClick={sorteeriTahedKasvavalt}>Sorteeri tähed kasvavalt</button>
