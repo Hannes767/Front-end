@@ -11,6 +11,16 @@ function NavigationBar() {
         <Link to="cart">
             <button>Cart</button>
         </Link>
+
+        <Link to="admin/maintain-products">
+            <button>Maintain Products</button>
+        </Link>
+
+        <Link to="product/:index">
+            <button>Single Product</button>
+        </Link>
+
+        
     </div>
   )
 }
