@@ -8,6 +8,10 @@ function SingleProduct() {
   // const products = productsFromFile.slice(); kui tahan mappida
   const product = productsFromFile[index];
 
+  if (product === undefined) {    
+    return <div>Toodet ei leitud</div>
+  }
+
   return (
     <div>
       <div>Järjekorranumber, mis on URLis: {index}</div>
@@ -27,7 +31,7 @@ function SingleProduct() {
           <tbody>
           {/* {products.map((product, index) => */}
               <tr>
-                <td><img style={{width: "100px"}} src={product.image} alt="" /></td>
+                <td><img style={{width: "100px"}} src={product.image} alt="Toote pilt" /></td>
                 <td>{product.id}</td>
                 <td>{product.title}</td>
                 <td>{product.price} eurot</td>

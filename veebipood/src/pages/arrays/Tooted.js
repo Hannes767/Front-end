@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 function Tooted() {
   const [tooted, muudaTooted] = useState (tootedFailist.slice());
   const otsinguRef = useRef();
+  
   const reset = () => {
     muudaTooted (tootedFailist.slice());
   }

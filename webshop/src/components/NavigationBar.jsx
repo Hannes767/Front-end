@@ -5,19 +5,23 @@ function NavigationBar() {
   return (
     <div>
         <Link to="">
-            <button>Home page</button>
+            <button>Kodu</button>
         </Link>
 
         <Link to="cart">
-            <button>Cart</button>
+            <button>Ostukorv</button>
         </Link>
 
         <Link to="admin/maintain-products">
-            <button>Maintain Products</button>
+            <button>Halda tooteid</button>
         </Link>
 
         <Link to="product/:index">
-            <button>Single Product</button>
+            <button>Toode</button>
+        </Link>
+
+        <Link to="admin/add-product">
+            <button>Lisa toode</button>
         </Link>
 
         

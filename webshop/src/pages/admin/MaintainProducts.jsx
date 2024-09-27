@@ -1,17 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import productsFromFile from "../../data/products.json"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MaintainProducts() {
   const [products, setProducts] = useState(productsFromFile.slice());
+  const searchRef = useRef();
 
   const deleteItem = (index) => {
     productsFromFile.splice(index,1);
     setProducts(productsFromFile.slice());
+    toast.success("Kustutatud!");
+  }
+
+  const findProductsByTitle = () => {
+    const title = productsFromFile.filter(product => product.title.includes(searchRef.current.value));
+    setProducts(title);
   }
 
   return (
     <div>
-      <br />
+      <input ref={searchRef} onChange={findProductsByTitle} type="text" />
+      <br /><br />
       <table className='table-color'>
         <thead>
             <tr>
@@ -41,6 +51,12 @@ function MaintainProducts() {
               </tr>)}
           </tbody>
       </table>
+
+      <ToastContainer
+          position="bottom-right"
+          autoClose={4000}          
+          theme="dark"
+          />
     </div>
   )
 }

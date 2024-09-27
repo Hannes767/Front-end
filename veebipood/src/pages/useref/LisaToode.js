@@ -3,11 +3,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import tootedFailist from "../../data/tooted.json"
 
 function LisaToode() {
-    const [sonum, muudaSonum] = useState("Lisa juurde üks toode");    
+    const [sonum, muudaSonum] = useState("Lisa juurde üks auto");    
     const markRef = useRef();
     const mudelRef = useRef();
     const aastaRef = useRef();
-    const hindRef = useRef();
+    // const hindRef = useRef(); all puudub refi vastuvõtt!!!
     
 
     const lisa = () => {
@@ -16,11 +16,13 @@ function LisaToode() {
             "mark": markRef.current.value,
             "mudel": mudelRef.current.value,
             "aasta": aastaRef.current.value,
-            "hind": hindRef.current.value
-         }
+            "hind": 78000,
+            "pilt": "https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/ExtraImages/20230511115728_20220609053905_Skoda%20Superb%20_2_.jpg&w=700&c=1",
+            "aktiivne": true,
+          }
       );
       // muudaTooted(tootedFailist.slice());
-      muudaSonum("Edukalt toode lisatut!")
+      muudaSonum("Edukalt toode lisatud!")
       toast.success("Edukalt toode lisatud!")
 
    }
