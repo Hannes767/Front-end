@@ -13,8 +13,8 @@ import MaintainCategories from './pages/admin/MaintainCategories';
 import MaintainShops from './pages/admin/MaintainShops';
 import NotFound from './pages/global/NotFound';
 import Login from './pages/auth/Login';
-import Signup from './pages/auth/Signup';
 import NavigationBar from './components/NavigationBar';
+import SignUp from './pages/auth/SignUp';
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
         <Route path="admin/maintain-shops" element={<MaintainShops/>}/>
         
         <Route path="login" element={<Login/>}/>
-        <Route path="signup" element={<Signup/>}/>
+        <Route path="signup" element={<SignUp/>}/>
 
         <Route path='*' element={ <NotFound/> }/>
       </Routes>

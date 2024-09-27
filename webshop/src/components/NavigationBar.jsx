@@ -24,6 +24,10 @@ function NavigationBar() {
             <button>Lisa toode</button>
         </Link>
 
+        <Link to="signup">
+            <button>Sign up</button>
+        </Link>
+
         
     </div>
   )
