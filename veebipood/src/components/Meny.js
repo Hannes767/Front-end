@@ -18,7 +18,8 @@ function Meny() {
           <Nav>
             <Nav.Link as={Link} to="/logi-sisse">Login</Nav.Link>
             <Nav.Link as={Link} to="/registreeru">Signup</Nav.Link>
-            <Nav.Link as={Link} to="/shops">Meie poed</Nav.Link>            
+            <Nav.Link as={Link} to="/shops">Meie poed</Nav.Link> 
+            <Nav.Link as={Link} to="/avaleht">Tagasiside</Nav.Link>           
           </Nav>
         </Navbar.Collapse>
       </Container>
