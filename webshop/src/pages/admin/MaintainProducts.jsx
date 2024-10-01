@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import {Link} from "react-router-dom"
 import productsFromFile from "../../data/products.json"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,7 +48,12 @@ function MaintainProducts() {
                 <td>{product.category}</td>
                 <td>{product.rating.rate}</td>
                 <td>{product.rating.count}</td>
-                <td><button onClick={() => deleteItem(index)}>Kustuta</button> </td>         
+                <td>
+                  <button onClick={() => deleteItem(index)}>Kustuta</button>
+                    <Link to= {"/admin/edit-product/" + index}>
+                      <button>Muuda</button>
+                    </Link>
+                </td>                    
               </tr>)}
           </tbody>
       </table>

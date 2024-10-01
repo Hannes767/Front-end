@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 function AdminHome() {
   return (
     <div>
-      <Button as={Link} to="/maintain-products" variant="outline-primary">Halda tooteid</Button>{' '}
+      <Button as={Link} to="maintain-products" variant="outline-primary">Halda tooteid</Button>{' '}
       <Button as={Link} to="add-product" variant="outline-secondary">Lisa toode</Button>{' '}
       {/* <Button variant="outline-success">Success</Button>{' '}
       <Button variant="outline-warning">Warning</Button>{' '}

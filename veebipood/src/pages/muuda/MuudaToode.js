@@ -14,8 +14,7 @@ function MuudaToode() {
       "mark": markRef.current.value,
       "mudel": mudelRef.current.value,
       "aasta": aastaRef.current.value,       
-    }
-    
+    }    
   }
 
   if (leitud === undefined) {
