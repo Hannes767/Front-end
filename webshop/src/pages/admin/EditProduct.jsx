@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useParams, Link } from "react-router-dom"
 import productsFromFile from "../../data/products.json";
-import { ToastContainer, toast } from 'react-toastify';
+
 
 function EditProduct() {
   const idRef = useRef();
@@ -11,8 +11,7 @@ function EditProduct() {
   const categoryRef = useRef();
   const imageRef = useRef();
   const ratingRateRef = useRef();
-  const ratingCountRef = useRef();
-  const [message, setMessage] = useState("Muuda toodet"); 
+  const ratingCountRef = useRef();  
   const {index} = useParams();
   const found = productsFromFile[index];
   const [imagePreview, setImagePreview] = useState(found.image);
@@ -35,10 +34,8 @@ function EditProduct() {
             "count": ratingCountRef.current.value,  
           }   
          }
-      );
+      );      
       
-      setMessage("Toode edukalt muudetud!")
-      toast.success("Toode edukalt muudetud!")
    }
 
    const handleImageChange = () => {
@@ -47,7 +44,7 @@ function EditProduct() {
 
   return (
     <div>
-      <div>{message}</div> <br />
+      
       <label>Toote id</label><br />
       <input ref={idRef} type="number" defaultValue={found.id}/><br />
       <label>Toote pealkiri</label><br />
@@ -64,23 +61,17 @@ function EditProduct() {
         type="url"
         defaultValue={found.image}
         onChange={handleImageChange} // Update the image preview when input changes
-      /><br />
+        /><br />
       <img src={imagePreview} alt="Toote pilt" style={{ width: '150px' }} /> <br />
       <label>Toote hinnang</label><br />
       <input ref={ratingRateRef} type="number" defaultValue={found.rating.rate} /><br />
       <label>Toote hinnang</label><br />
       <input ref={ratingCountRef} type="number" defaultValue={found.rating.count} /><br />
        
-      <Link to="/admin/edit-product">
+      <Link to="/admin/maintain-products">
         <button onClick={change}>Muuda</button><br />
       </Link>
       
-
-      <ToastContainer
-          position="bottom-right"
-          autoClose={2000}          
-          theme="dark"
-          />
     </div>
   )
 }

@@ -13,6 +13,7 @@ const resources = {
       "login": "Login",
       "signup": "Signup",
       "contact": "Feedback",
+      "map": "Shops location",
     }
   },
   et: {
@@ -23,6 +24,7 @@ const resources = {
       "login": "Logi sisse",
       "signup": "Registreeru",
       "contact": "Tagasiside",
+      "map": "Poodide asukoht",
     }
   }
 };

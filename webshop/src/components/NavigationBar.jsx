@@ -27,6 +27,7 @@ function NavigationBar() {
             <Nav.Link as={Link} to="/login">{t("login")}</Nav.Link>
             <Nav.Link as={Link} to="/signup">{t('signup')}</Nav.Link>
             <Nav.Link as={Link} to="/contact">{t('contact')}</Nav.Link>
+            <Nav.Link as={Link} to="/shops">{t('map')}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

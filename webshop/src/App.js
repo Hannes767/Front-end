@@ -17,6 +17,8 @@ import NavigationBar from './components/NavigationBar';
 import SignUp from './pages/auth/SignUp';
 
 
+
+
 function App() {
   return (
     <div className="App">
@@ -40,6 +42,7 @@ function App() {
         <Route path="signup" element={<SignUp/>}/>
 
         <Route path='*' element={ <NotFound/> }/>
+        
       </Routes>
     </div>
   );
