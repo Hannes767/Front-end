@@ -11,6 +11,7 @@ function AdminHalda() {
         <Button as={Link} to="/lisa-toode"variant="success">Lisa uus toode</Button>{' '}
         <Button as={Link} to="/halda-tootajad" variant="warning">Halda töötajad</Button>{' '}        
         <Button as={Link} to="/halda-tooted" variant="info">Halda tooted</Button>{' '}
+        <Button as={Link} to="/tarnija" >Tarnija</Button>{' '}
 
         {/* <Link to="lisa-toode">
             <button className="nupp">Lisa uus toode</button>

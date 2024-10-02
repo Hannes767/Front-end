@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import tootedFailist from "../../data/tooted.json"
+import keskusedFailist from "../../data/keskused.json"
 
 function LisaToode() {
     const [sonum, muudaSonum] = useState("Lisa juurde üks auto");    
     const markRef = useRef();
     const mudelRef = useRef();
     const aastaRef = useRef();
+    const keskusRef = useRef();
     // const hindRef = useRef(); all puudub refi vastuvõtt!!!
     
 
@@ -16,8 +18,9 @@ function LisaToode() {
             "mark": markRef.current.value,
             "mudel": mudelRef.current.value,
             "aasta": aastaRef.current.value,
-            "hind": 78000,
+            "hind": 78000,            
             "pilt": "https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/ExtraImages/20230511115728_20220609053905_Skoda%20Superb%20_2_.jpg&w=700&c=1",
+            "keskus": keskusRef.current.value,
             "aktiivne": true,
           }
       );
@@ -50,6 +53,12 @@ function LisaToode() {
       <input ref={markRef} type="text" /><br />
       <label>Auto mudel</label><br />
       <input ref={mudelRef} type="text" /><br />
+
+      <label>Toote keskus</label><br />
+      <select ref={keskusRef}>
+        {keskusedFailist.map(keskus => <option>{keskus.nimi}</option>)}
+      </select><br />
+
       <label>Tootmisaasta</label><br />
       <input ref={aastaRef} type="number" /><br />
       {/* <div>Kokku: {tooted.length}</div> */}
