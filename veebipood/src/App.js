@@ -31,14 +31,31 @@ import MuudaTootaja from './pages/muuda/MuudaTootaja';
 import Meny from './components/Meny';
 import AdminHalda from './pages/halda/AdminHalda';
 import Shops from './pages/usestate/Shops';
+import {useState} from "react";
+import Tarnija from './pages/api/Tarnija';
 
 
 
 function App() {
+  const [dark, setDark]= useState(localStorage.getItem("tume-leht"));
+
+  const muudaTumedaks = () => {
+    setDark("true");
+    localStorage.setItem("tume-leht", "true")
+  }
+
+  const muudaHeledaks = () => {
+    setDark("false");
+    localStorage.setItem("tume-leht", "false")
+  }
   return (
-    <div className="App">
+    <div className={dark === "true" ? "App-dark" : "App"}>
 
       <Meny/>
+      <button onClick={muudaTumedaks}>Dark mode</button>
+      <button onClick={muudaHeledaks}>Light mode</button>
+
+  
 
       <Routes>
       <Route path='' element={<Navigate to="avaleht"/>  }/>
@@ -74,6 +91,7 @@ function App() {
 
       <Route path="admin" element={<AdminHalda/>}/>
       <Route path="shops" element={<Shops/>}/>
+      <Route path="tarnija" element={<Tarnija/>}/>
 
       </Routes>
     </div> 

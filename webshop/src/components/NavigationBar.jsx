@@ -10,9 +10,10 @@ function NavigationBar() {
     
   return (
     <div>
-        <button onClick={() => i18n.changeLanguage("et")}>EST</button>
-        <button onClick={() => i18n.changeLanguage("en")}>ENG</button>
-       <div>{t('admin')}</div> 
+      <div>
+        <div class="div1" onClick={() => i18n.changeLanguage("et")}>EST</div>
+        <div class="div2" onClick={() => i18n.changeLanguage("en")}>ENG</div>
+      </div>
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand as={Link} to="/">Webshop</Navbar.Brand>

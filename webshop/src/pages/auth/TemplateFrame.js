@@ -4,7 +4,7 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
@@ -54,7 +54,7 @@ function TemplateFrame({
               p: '8px 12px',
             }}
           >
-            <Button
+            {/* <Button
               variant="text"
               size="small"
               aria-label="Back to templates"
@@ -64,7 +64,7 @@ function TemplateFrame({
               sx={{ display: { xs: 'none', sm: 'flex' } }}
             >
               Back to templates
-            </Button>
+            </Button> */}
             <IconButton
               size="small"
               aria-label="Back to templates"

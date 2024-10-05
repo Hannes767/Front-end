@@ -50,6 +50,7 @@ return (
    {tooted.map((toode, jrknr)=>
        <div key={jrknr}>
           {jrknr}. {toode.mark} {toode.mudel} : {toode.aasta}
+          <b>{toode.keskus}</b>
            <button onClick={() => kustuta(jrknr)}>x</button>
            <Link to= {"/muuda-toode/" + jrknr}>
               <button>Muuda</button>

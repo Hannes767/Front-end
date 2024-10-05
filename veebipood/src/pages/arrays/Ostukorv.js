@@ -1,14 +1,17 @@
 import React, {useState} from 'react'
 import { Link } from "react-router-dom"
-import ostukorvFailist from "../../data/ostukorv.json"
+import Pakiautomaadid from '../api/Pakiautomaadid';
+// import ostukorvFailist from "../../data/ostukorv.json"
 
 function Ostukorv() { //lehele  tulles võetakse algväärtus useState sulgude seest eht ostukorvist, mitte failist, lähen ära kustub lehelt
-  const [ostukorv, muudaOstukorv] = useState (ostukorvFailist.slice());
+  const [ostukorv, muudaOstukorv] = useState (JSON.parse(localStorage.getItem("ostukorv")) || []);
 
   const lisaPakiautomaat = () => {
     // muudaOstukorv(["Coca", "Fanta", "Sprite", "Red bull"])
-    ostukorvFailist.push({"mark":"Red bull", "hind": 3, "pilt": "pilt.jpg", "aktiivne": true});
-    muudaOstukorv(ostukorvFailist.slice());
+    ostukorv.push({"mark":"Red bull", "hind": 3, "pilt": "pilt.jpg", "aktiivne": true});
+    localStorage.setItem("ostukorv", JSON.stringify(ostukorv));
+    muudaOstukorv(ostukorv.slice());
+
   }
 
   // const lisaVichy = () => {
@@ -18,18 +21,21 @@ function Ostukorv() { //lehele  tulles võetakse algväärtus useState sulgude s
   // }
     //saan kätte onClick abil
   const lisa = (uusToode) => {
-    ostukorvFailist.push(uusToode);
-    muudaOstukorv(ostukorvFailist.slice());
+    ostukorv.push(uusToode);
+    localStorage.setItem("ostukorv", JSON.stringify(ostukorv));
+    muudaOstukorv(ostukorv.slice());
   }
       //kui tuleb sulgude sees tühjus/sõna,siis konverteerib asukoha nulliks
   const kustuta = (index) => {
-    ostukorvFailist.splice(index, 1);
-    muudaOstukorv(ostukorvFailist.slice());
+    ostukorv.splice(index, 1);
+    localStorage.setItem("ostukorv", JSON.stringify(ostukorv));
+    muudaOstukorv(ostukorv.slice());
   }
 
   const tyhenda = () => {
-    ostukorvFailist.splice(0);
-    muudaOstukorv(ostukorvFailist.slice()); //alates 0st, lõpuni välja kustutab
+    ostukorv.splice(0);
+    localStorage.setItem("ostukorv", JSON.stringify(ostukorv));
+    muudaOstukorv(ostukorv.slice()); //alates 0st, lõpuni välja kustutab
   }
 
   const arvutaHinnadKokku = () => {
@@ -44,8 +50,9 @@ function Ostukorv() { //lehele  tulles võetakse algväärtus useState sulgude s
     <div>
 
       <div>
-        <div>Kokku: {ostukorv.length}</div>
-        <button onClick={lisaPakiautomaat}>Lisa lõppu pakiautomaadi juurde</button>
+        {ostukorv.length > 0 && <div>Kokku: {ostukorv.length}</div>}
+
+        {ostukorv.length > 0 && <button onClick={lisaPakiautomaat}>Lisa lõppu pakiautomaadi juurde</button>}
         {/* <button onClick={lisaVichy}>Lisa lõppu Vichy juurde</button> */}
         <div>{ostukorv.map((toode, index )=> 
           <div>
@@ -62,8 +69,11 @@ function Ostukorv() { //lehele  tulles võetakse algväärtus useState sulgude s
       </div>
 
       <Link to="/avaleht">Mine avalehele</Link>  
-
-      <div>Kokku: {arvutaHinnadKokku()} €</div>       
+      
+      <br />
+      {ostukorv.length > 0 && <Pakiautomaadid />}
+      <br />
+      {ostukorv.length > 0 && <div>Kokku: {arvutaHinnadKokku()} €</div>}       
         
         
     </div>

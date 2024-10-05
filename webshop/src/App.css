@@ -21,3 +21,9 @@ td, th {
   margin: 3%;
   border-radius: 10px;
 }
+
+.div1, .div2 { 
+  display: inline-block; 
+  vertical-align: top;   
+  padding: 3px;
+} 

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Link } from "react-router-dom"
-import ostukorvFailist from "../../data/ostukorv.json"
+// import ostukorvFailist from "../../data/ostukorv.json"
 import tootedFailist from "../../data/tooted.json"
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -14,9 +14,14 @@ function Tooted() {
   }
 
   const lisaOstukorvi = (uusToode) => {
-    ostukorvFailist.push(uusToode);    //ostukorv ei pea siin htmlis uuenema
+    // ostukorvFailist.push(uusToode);    //ostukorv ei pea siin htmlis uuenema
     toast.success("Ostukorvi lisatud!");
+    const ostukorvLS = JSON.parse(localStorage.getItem("ostukorv")) || [];
+    ostukorvLS.push(uusToode);
+    localStorage.setItem("ostukorv", JSON.stringify(ostukorvLS));
   }
+
+  
 
   const sorteeriAZ = () => {
     tooted.sort((a,b) => a.mark.localeCompare(b.mark, "et"));
