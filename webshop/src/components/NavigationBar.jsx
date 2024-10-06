@@ -7,12 +7,22 @@ import { useTranslation } from 'react-i18next';
 
 function NavigationBar() {
     const { t, i18n } = useTranslation();
+
+    const changeLangEt = () => {
+      i18n.changeLanguage("et");
+      localStorage.setItem("language", "et");
+    }
+  
+    const changeLangEn = () => {
+      i18n.changeLanguage("en");
+      localStorage.setItem("language", "en");
+    }
     
   return (
     <div>
       <div>
-        <div class="div1" onClick={() => i18n.changeLanguage("et")}>EST</div>
-        <div class="div2" onClick={() => i18n.changeLanguage("en")}>ENG</div>
+        <div className="div1" onClick={changeLangEt}>EST</div>
+        <div className="div2" onClick={changeLangEn}>ENG</div>
       </div>
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>

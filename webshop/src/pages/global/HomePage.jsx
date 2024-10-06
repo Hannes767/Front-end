@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import productsFromFile from "../../data/products.json";
-import productsFromCart from "../../data/cart.json";
+// import productsFromCart from "../../data/cart.json";
 import {Link} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,8 +12,11 @@ function HomePage() {
     
 
     const addToCart = (newItem) => {
-      productsFromCart.push(newItem);
+      // productsFromCart.push(newItem);
       toast("Ostukorvi lisatud!");
+      const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
+      cartLS.push(newItem);
+      localStorage.setItem("cart", JSON.stringify(cartLS));
     }
 
     const sortAZ = () => {
