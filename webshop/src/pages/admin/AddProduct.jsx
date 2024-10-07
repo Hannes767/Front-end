@@ -4,17 +4,19 @@ import productsFromFile from "../../data/products.json";
 
 function AddProduct() {
   const [message, setMessage] = useState("Lisa juurde üks toode");    
-    const idRef = useRef();
-    const titleRef = useRef();
-    const priceRef = useRef();
-    const descriptionRef = useRef();
-    const categoryRef = useRef();
-    const imageRef = useRef();
-    const ratingRateRef = useRef();
+  const idRef = useRef();
+  const titleRef = useRef();
+  const priceRef = useRef();
+  const descriptionRef = useRef();
+  const categoryRef = useRef();
+  const imageRef = useRef();
+  const ratingRateRef = useRef();
+
+  const uniqueCategories = [...new Set(productsFromFile.map(product => product.category))];
     
     
 
-    const add = () => {
+  const add = () => {
       productsFromFile.push(
          {
           "id": idRef.current.value,
@@ -46,8 +48,12 @@ function AddProduct() {
       <input ref={priceRef} type="number" /><br />
       <label>Toote kirjeldus</label><br />
       <input ref={descriptionRef} type="text" /><br />
+
       <label>Toote kategooria</label><br />
-      <input ref={categoryRef} type="text" /><br />
+      <select ref={categoryRef}>
+        {uniqueCategories.map(category => <option>{category}</option>)}
+      </select>
+      <br />
       <label>Toote pilt failist või internetist</label> <br />
       <input ref={imageRef} type="file" />
       <label>Toote pildi URL: </label>

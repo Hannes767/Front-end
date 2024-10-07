@@ -1,23 +1,26 @@
 import React, { useState } from 'react'
-import productsFromCart from "../../data/cart.json"
+// import productsFromCart from "../../data/cart.json"
 
 
 function Cart() {
-  const [cart, setCart] = useState (productsFromCart.slice());
+  const [cart, setCart] = useState (JSON.parse(localStorage.getItem("cart")) || []);
 
   const add = (newItem) => {
-    productsFromCart.push(newItem);
-    setCart(productsFromCart.slice());
+    cart.push(newItem);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setCart(cart.slice());    
   }
 
   const deleteOneItem = (index) => {
-    productsFromCart.splice(index,1);
-    setCart(productsFromCart.slice());
+    cart.splice(index,1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setCart(cart.slice());    
   }
 
   const emptyTheCart = () => {
-    productsFromCart.splice(0);
-    setCart(productsFromCart.slice());
+    cart.splice(0);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setCart(cart.slice());
   }
 
   const totalPrice = () => {

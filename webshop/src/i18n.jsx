@@ -14,6 +14,7 @@ const resources = {
       "signup": "Signup",
       "contact": "Feedback",
       "map": "Shops location",
+      
     }
   },
   et: {

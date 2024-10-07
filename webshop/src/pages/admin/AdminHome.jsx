@@ -7,8 +7,8 @@ function AdminHome() {
     <div>
       <Button as={Link} to="maintain-products" variant="outline-primary">Halda tooteid</Button>{' '}
       <Button as={Link} to="add-product" variant="outline-secondary">Lisa toode</Button>{' '}
-      {/* <Button variant="outline-success">Success</Button>{' '}
-      <Button variant="outline-warning">Warning</Button>{' '}
+      <Button as={Link} to="maintain.categories" variant="outline-success">Halda kategooriaid</Button>{' '}
+      {/* <Button variant="outline-warning">Warning</Button>{' '}
       <Button variant="outline-danger">Danger</Button>{' '}
       <Button variant="outline-info">Info</Button>{' '}
       <Button variant="outline-light">Light</Button>{' '}
