@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // import productsFromCart from "../../data/cart.json"
 
 
 function Cart() {
   const [cart, setCart] = useState (JSON.parse(localStorage.getItem("cart")) || []);
+  const [pakiautomaadid, setPakiautomaadid] = useState([]);
 
   const add = (newItem) => {
     cart.push(newItem);
@@ -29,6 +30,12 @@ function Cart() {
     return sum;
   }
 
+  useEffect(() => {
+    fetch("https://www.omniva.ee/locations.json")
+      .then(res => res.json())
+      .then(body => setPakiautomaadid(body))
+  }, []);
+
 
   return (
     <div>
@@ -48,6 +55,11 @@ function Cart() {
             </div>
         )}
 
+        <div>Vali pakiautomaat</div>
+
+        <select>
+          {pakiautomaadid.map(automaat => <option>{automaat.NAME}</option>)}
+        </select>
 
     </div>
 
