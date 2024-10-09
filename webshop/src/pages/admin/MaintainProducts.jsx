@@ -1,22 +1,43 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {Link} from "react-router-dom"
-import productsFromFile from "../../data/products.json"
+// import productsFromFile from "../../data/products.json"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Spinner } from "react-bootstrap";
 
 function MaintainProducts() {
-  const [products, setProducts] = useState(productsFromFile.slice());
+  
   const searchRef = useRef();
+  const [products, setProducts] = useState([]);
+  const [dbProducts, setDbProducts] = useState([]);
+    const url = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+
+    useEffect(() => {
+      fetch(url)
+        .then(res => res.json())
+        .then(json => {
+          setProducts(json || []);
+          setDbProducts(json || []);
+        })
+    }, []);
 
   const deleteItem = (index) => {
-    productsFromFile.splice(index,1);
-    setProducts(productsFromFile.slice());
+    products.splice(index,1);
+    setProducts(products.slice());
+    fetch (url, {method: "PUT", body: JSON.stringify(products)});
     toast.success("Kustutatud!");
   }
 
   const findProductsByTitle = () => {
-    const title = productsFromFile.filter(product => product.title.includes(searchRef.current.value));
+    const title = dbProducts.filter(product => 
+      product.title.toLowerCase().includes(searchRef.current.value.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchRef.current.value.toLowerCase())
+  ) ;
     setProducts(title);
+  }
+
+  if (dbProducts.length === 0) {
+    return <Spinner/>
   }
 
   return (

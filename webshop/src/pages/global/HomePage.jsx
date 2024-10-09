@@ -1,14 +1,22 @@
 import React from 'react';
-import { useState } from 'react';
-import productsFromFile from "../../data/products.json";
+import { useState, useEffect } from 'react';
+// import productsFromFile from "../../data/products.json";
 // import productsFromCart from "../../data/cart.json";
 import {Link} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Spinner } from "react-bootstrap";
 
 
 function HomePage() {
-    const [products, setProducts] = useState(productsFromFile.slice());
+    const [products, setProducts] = useState([]);
+    const url = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+
+    useEffect(() => {
+      fetch(url)
+        .then(res => res.json())
+        .then(json => setProducts(json || []))
+    }, []);
     
 
     const addToCart = (newItem) => {
@@ -52,7 +60,11 @@ function HomePage() {
     const filterCategoryElectronics = () => {
       const category = products.filter(product => product.category.includes("electronics"));
       setProducts(category);
-    }  
+    } 
+    
+    if (products.length === 0) {
+      return <Spinner/>
+    }
 
   return (
     <div>

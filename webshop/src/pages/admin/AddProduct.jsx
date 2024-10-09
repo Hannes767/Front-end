@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import productsFromFile from "../../data/products.json";
+// import productsFromFile from "../../data/products.json";
 
 function AddProduct() {
   const [message, setMessage] = useState("Lisa juurde üks toode");    
@@ -12,12 +12,21 @@ function AddProduct() {
   const imageRef = useRef();
   const ratingRateRef = useRef();
 
-  const uniqueCategories = [...new Set(productsFromFile.map(product => product.category))];
+  
+
+  const [products, setProducts] = useState([]);
+    const url = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+
+    useEffect(() => {
+      fetch(url)
+        .then(res => res.json())
+        .then(json => setProducts(json || []))
+    }, []);
     
-    
+    const uniqueCategories = [...new Set(products.map(product => product.category))]; 
 
   const add = () => {
-      productsFromFile.push(
+      products.push(
          {
           "id": idRef.current.value,
           "title": titleRef.current.value,
@@ -34,6 +43,7 @@ function AddProduct() {
       
       setMessage("Toode edukalt lisatud!")
       toast.success("Toode edukalt lisatud!")
+      fetch (url, {method: "PUT", body: JSON.stringify(products)});
 
    }
   return (

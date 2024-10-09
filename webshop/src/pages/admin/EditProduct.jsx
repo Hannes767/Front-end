@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useParams, Link } from "react-router-dom"
-import productsFromFile from "../../data/products.json";
+// import productsFromFile from "../../data/products.json";
 
 
 function EditProduct() {
@@ -13,15 +13,27 @@ function EditProduct() {
   const ratingRateRef = useRef();
   const ratingCountRef = useRef();  
   const {index} = useParams();
-  const found = productsFromFile[index];
-  const [imagePreview, setImagePreview] = useState(found.image);
+  
+  
+
+  const [products, setProducts] = useState([]);
+    const url = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+
+    useEffect(() => {
+      fetch(url)
+        .then(res => res.json())
+        .then(json => setProducts(json || []))
+    }, []);
+
+    const found = products[index];
+    const [imagePreview, setImagePreview] = useState(found.image);
 
   if (found === undefined) {        
     return <div>Toodet ei leitud</div>
   }
 
     const change = () => {
-      productsFromFile[index] = (
+      products[index] = (
          {
           "id": idRef.current.value,
           "title": titleRef.current.value,
@@ -33,8 +45,9 @@ function EditProduct() {
             "rate": ratingRateRef.current.value,   
             "count": ratingCountRef.current.value,  
           }   
-         }
-      );      
+         }         
+      ); 
+      fetch (url, {method: "PUT", body: JSON.stringify(products)});     
       
    }
 
