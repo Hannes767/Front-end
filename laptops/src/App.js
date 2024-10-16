@@ -6,7 +6,7 @@ import LisaArvuti from './pages/LisaArvuti';
 
 function App() {
   return (
-    <div>
+    <div className='App'>
         
         
         
