@@ -79,18 +79,20 @@ function HomePage() {
       <br />
       
         <br /><br />
-        {products.map((product, index) =>
-            <div key={product.id}>
+        <div className="products">
+          {products.map((product, index) =>
+            <div  className="product" key={product.id}>
                 <img style={{width: "100px"}} src={product.image} alt="" />
-                <div>{product.title}</div>
+                <div className="title">{product.title}</div>
                 <div>{product.price} eurot</div>
-                <div>Hinnang: {product.rating.rate}</div>
+                
                 <Link to= {"/product/" + index}>
                   <button>Vaata lähemalt</button>
                 </Link>
                 <button onClick={() => addToCart(product)}>Lisa ostukorvi</button><br /><br />
-            </div>
+          </div>
         )}
+        </div>
         <ToastContainer
               position="bottom-right"
               autoClose={2000}          

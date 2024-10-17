@@ -17,7 +17,9 @@ function EditProduct() {
   
 
   const [products, setProducts] = useState([]);
-    const url = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+  const url = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+  const [categories, setCategories] = useState([]);
+  const categoryurl = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/categories.json"
 
     useEffect(() => {
       fetch(url)
@@ -25,8 +27,14 @@ function EditProduct() {
         .then(json => setProducts(json || []))
     }, []);
 
+    useEffect(() => {
+      fetch(categoryurl)
+        .then(res => res.json())
+        .then(json => setCategories(json || []))
+    }, []);
+
     const found = products[index];
-    const [imagePreview, setImagePreview] = useState(found.image);
+    const [imagePreview, setImagePreview] = useState();
 
   if (found === undefined) {        
     return <div>Toodet ei leitud</div>
@@ -35,15 +43,15 @@ function EditProduct() {
     const change = () => {
       products[index] = (
          {
-          "id": idRef.current.value,
+          "id": Number(idRef.current.value),
           "title": titleRef.current.value,
-          "price": priceRef.current.value,
+          "price": Number(priceRef.current.value),
           "description": descriptionRef.current.value,
           "category": categoryRef.current.value,
           "image": imageRef.current.value,
           "rating": {
-            "rate": ratingRateRef.current.value,   
-            "count": ratingCountRef.current.value,  
+            "rate": Number(ratingRateRef.current.value),   
+            "count": Number(ratingCountRef.current.value),  
           }   
          }         
       ); 
@@ -67,7 +75,12 @@ function EditProduct() {
       <label>Toote kirjeldus</label><br />
       <input ref={descriptionRef} type="text" defaultValue={found.description} /><br />
       <label>Toote kategooria</label><br />
-      <input ref={categoryRef} type="text" defaultValue={found.category} /><br />      
+      {/* <input ref={categoryRef} type="text" defaultValue={found.category} /><br /> */}
+      <select ref={categoryRef} defaultValue={found.category}>
+        {categories.map(category => <option key={category.name}>{category.name}</option>)}
+      </select>
+      <br />
+
       <label>Toote pilt: </label><br />
       <input
         ref={imageRef}

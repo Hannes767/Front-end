@@ -15,35 +15,50 @@ function AddProduct() {
   
 
   const [products, setProducts] = useState([]);
-    const url = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+  const url = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+  const [categories, setCategories] = useState([]);
+  const categoryurl = "https://webshop-37564-default-rtdb.europe-west1.firebasedatabase.app/categories.json"
 
     useEffect(() => {
       fetch(url)
         .then(res => res.json())
         .then(json => setProducts(json || []))
     }, []);
+
+    useEffect(() => {
+      fetch(categoryurl)
+        .then(res => res.json())
+        .then(json => setCategories(json || []))
+    }, []);
     
-    const uniqueCategories = [...new Set(products.map(product => product.category))]; 
+    // const uniqueCategories = [...new Set(products.map(product => product.category))]; 
 
   const add = () => {
       products.push(
          {
-          "id": idRef.current.value,
+          "id": Number(idRef.current.value),
           "title": titleRef.current.value,
-          "price": priceRef.current.value,
+          "price": Number(priceRef.current.value),
           "description": descriptionRef.current.value,
           "category": categoryRef.current.value,
           "image": imageRef.current.value,
           "rating": {
-            "rate": ratingRateRef.current.value,   
-            "rating.count": 0,  
+            "rate": Number(ratingRateRef.current.value),   
+            "count": 0,  
           }   
          }
       );
       
       setMessage("Toode edukalt lisatud!")
       toast.success("Toode edukalt lisatud!")
-      fetch (url, {method: "PUT", body: JSON.stringify(products)});
+      fetch(url, {method: "PUT", body: JSON.stringify(products)});
+      idRef.current.value = "";
+      titleRef.current.value = "";
+      priceRef.current.value = "";
+      descriptionRef.current.value = "";
+      categoryRef.current.value = "";
+      imageRef.current.value = "";
+      ratingRateRef.current.value = "";
 
    }
   return (
@@ -61,7 +76,7 @@ function AddProduct() {
 
       <label>Toote kategooria</label><br />
       <select ref={categoryRef}>
-        {uniqueCategories.map(category => <option>{category}</option>)}
+        {categories.map(category => <option key={category.name}>{category.name}</option>)}
       </select>
       <br />
       <label>Toote pilt failist või internetist</label> <br />

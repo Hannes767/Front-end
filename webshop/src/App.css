@@ -27,3 +27,65 @@ td, th {
   vertical-align: top;   
   padding: 3px;
 } 
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin: 3%;
+}
+
+.product {
+  border: 1px solid lightgray;
+  padding: 10px
+}
+
+.product img {
+  height: 100px;
+  width: 100px;
+  transition: 1s;
+}
+
+.product:hover img {
+  transform: scale(110%);
+  transition: 1s;
+}
+
+.title {
+  height: 70px;
+  font-weight: bold;
+}
+
+.cart-product {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10%;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+}
+
+.product-image {
+  width: 50px;
+  height: 50px;
+
+}
+
+.product-title {
+  width: 150px;
+}
+
+.product-price {
+  width: 80px;
+
+}
+
+.edit-button {
+  height: 30px;
+  width: 100px;
+}
+
+.delete-button {
+  height: 30px;
+  width: 100px;
+}
+
+

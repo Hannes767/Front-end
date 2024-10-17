@@ -27,7 +27,7 @@ function Cart() {
   const totalPrice = () => {
     let sum = 0;
     cart.forEach(product => sum = sum + product.price);
-    return sum;
+    return sum.toFixed(2);
   }
 
   useEffect(() => {
@@ -45,13 +45,14 @@ function Cart() {
       {cart.length === 0 && <div>Ostukorv on tühi</div>}
       {cart.length > 0 && <button onClick={emptyTheCart}>Tühjenda ostukorv</button>}
       <br /><br />
+
       {cart.map((product, index )=>
-            <div key={product.id}>
-                <img style={{width: "100px"}} src={product.image} alt="" />
-                <div>{product.title}</div>
-                <div>{product.price} eurot</div>
-                <button onClick={() => add(product)}>Lisa toode</button>
-                <button onClick={() => deleteOneItem(index)}>x</button><br /><br />
+            <div className="cart-product" key={product.id}>
+                <img className='product-image' style={{width: "100px"}} src={product.image} alt="" />
+                <div className='product-title'>{product.title}</div>
+                <div className='product-price'>{product.price} eurot</div>
+                <button className="edit-button" onClick={() => add(product)}>Lisa toode</button>
+                <button className='delete-button' onClick={() => deleteOneItem(index)}>x</button><br /><br />
             </div>
         )}
 

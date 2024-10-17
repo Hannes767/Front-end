@@ -1,0 +1,147 @@
+[
+    {
+      "name": "Rakvere Ametikool",
+      "location": "Rakvere",
+      "county": "Lääne-Virumaa maakond",
+      "address": "Piiri 8, 44316 Rakvere",
+      "contactPhone": "+372 329 5030",
+      "homepageUrl": "https://www.rak.ee/et",
+      "email": "info@rak.ee",
+      "logo": "",
+      "fields": [
+        {
+          "name": "Keevitus- ja metallitööd (3a)",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/metall/keevitus-ja-metallitood-3a",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/keevitus-ja-metallitood"
+        },
+        {
+          "name": "Keevitaja (0,5a)",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/metall/keevitaja-05a",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/keevitaja"
+        },
+        {
+          "name": "Keevitaja (osakutsega TIG-keevitaja)",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/metall/keevitaja-osakutsega-tig-keevitaja",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/keevitaja-tig"
+        },
+        {
+          "name": "Koostelukksepp (töökohapõhine õpe)",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/metall/koostelukksepp-tookohapohine-ope",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/koostelukksepp"
+        },
+        {
+          "name": "Metallilõikepinkidel töötaja (töökohapõhine õpe)",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/metall/metalliloikepinkidel-tootaja-tookohapohine-ope",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/metallilookepinkidel-tootaja"
+        },
+        {
+          "name": "Tööstuslike metalltoodete värvija (töökohapõhine õpe)",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/metall/toostuslike-metalltoodete-varvija-tookohapohine-ope",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/toostuslike-metalltoodete-varvija"
+        },
+        {
+          "name": "Sõiduautotehnik (3 a)",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/auto/soiduautotehnik-3",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/soiduautotehnik"
+        },
+        {
+          "name": "Automaaler (3 a)",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/auto/automaaler-3",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/automaaler"
+        },
+        {
+          "name": "Automaaler (1,5 a)",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/auto/automaaler-15",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/automaaler"
+        },
+        {
+          "name": "Sõidukite pindade hooldaja ja rehvitehnik",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/auto/soidukite-pindade-hooldaja-ja-rehvitehnik",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/soidukite-pindade-hooldaja"
+        },
+        {
+          "name": "Sõiduautodiagnostik",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/auto/soiduautodiagnostik",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/soiduautodiagnostik"
+        },
+        {
+          "name": "Kokk",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/toitlustus-ja-teenindus/kokk",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/kokk"
+        },
+        {
+          "name": "Pagari- ja kondiitritoodete tehnoloogia",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/toitlustus-ja-teenindus/pagari-ja-kondiitritoodete-tehnoloogia",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/pagari-ja-kondiitritoodete-tehnoloogia"
+        },
+        {
+          "name": "Toitlustusteenindus",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/toitlustus-ja-teenindus/toitlustusteenindus",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/toitlustusteenindus"
+        },
+        {
+          "name": "Abipagar",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/toitlustus-ja-teenindus/abipagar",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/abipagar"
+        },
+        {
+          "name": "Abikokk",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/toitlustus-ja-teenindus/abikokk",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/abikokk"
+        },
+        {
+          "name": "IT-süsteemide nooremspetsialist",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/it/it-susteemide-nooremspetsialist",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/it-susteemide-nooremspetsialist"
+        },
+        {
+          "name": "Kutsevalikuõpe",
+          "url": "https://www.rak.ee/et/oppimisvoimalused/erialad/kutsevalikuope/kutsevalikuope",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/kutsevalikuope"
+        }
+      ]
+    },
+    {
+      "name": "Tartu Kutsehariduskeskus",
+      "location": "Tartu",
+      "county": "Tartu maakond",
+      "address": "Soola 2, 50106 Tartu",
+      "contactPhone": "+372 730 0222",
+      "homepageUrl": "https://www.tkhk.ee/",
+      "email": "info@tkhk.ee",
+      "logo": "",
+      "fields": [
+        {
+          "name": "Automootoritehnik",
+          "url": "https://www.tkhk.ee/automotive-technician",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/automotive-technician"
+        },
+        {
+          "name": "Kulinaaria",
+          "url": "https://www.tkhk.ee/culinary-arts",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/culinary-arts"
+        },
+        {
+          "name": "IT-süsteemide spetsialist",
+          "url": "https://www.tkhk.ee/it-systems-specialist",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/it-systems-specialist"
+        },
+        {
+          "name": "Ehitus- ja ehitusinsener",
+          "url": "https://www.tkhk.ee/construction-and-building-technician",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/construction-and-building-technician"
+        },
+        {
+          "name": "Elektriinseneeria",
+          "url": "https://www.tkhk.ee/electrical-engineering",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/electrical-engineering"
+        },
+        {
+          "name": "Tervishoid",
+          "url": "https://www.tkhk.ee/health-care",
+          "qualificationStandard": "https://kutseregister.ee/kutsestandard/health-care"
+        }
+      ]
+    }
+  ]
+  
