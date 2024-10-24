@@ -1,9 +1,43 @@
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import schoolsFromFile from "../vocationalinstitutions.json"
+import { Spinner } from "react-bootstrap";
+// import schoolsFromFile from "../vocationalinstitutions.json"
 
 function HomePage() {
-    const professions = schoolsFromFile.slice();
+    // const professions = schoolsFromFile.slice();
+    const searchRef = useRef();
+    const [professions, setProfessions] = useState([]);
+    const [localProfessions, setLocalProfessions] = useState([]);
+    const url = "https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json"
+
+    useEffect(() => {
+        fetch(url)
+          .then(res => res.json())
+          .then(json => {
+            setProfessions(json || []);
+            setLocalProfessions(json || []);
+          })
+      }, []);
+
+      
+    
+
+    const findProfessions = () => {
+        const result = localProfessions.filter(profession => 
+          profession.name.toLowerCase().includes(searchRef.current.value.toLowerCase()) ||
+          profession.fields(field => field.name.toLowerCase().includes(searchRef.current.value.toLowerCase()))
+      );
+        setProfessions(result);
+      }
+
+      if (localProfessions.length === 0) {
+        return <Spinner/>
+      }
+
+      const sortAZ = () => {
+        professions.sort((a,b) => a.fields.name.localeCompare(b.fields.name, "et"));
+        setProfessions(professions.slice());
+      }
 
   return (
     <div>
@@ -13,6 +47,11 @@ function HomePage() {
         <Link to="/change-professions">
             <button>Muuda erialasid</button>
         </Link>
+
+        <input ref={searchRef} onChange={findProfessions} type="text" />
+        <br /><br />
+        <button onClick={sortAZ}>Sorteeri A-Z</button>
+
         <br /><br />
         {professions.map((school, index) => (
             <div key={index}>

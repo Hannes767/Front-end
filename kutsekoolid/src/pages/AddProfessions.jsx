@@ -1,14 +1,21 @@
-import React, { useRef, useState } from 'react'
-import schoolsFromFile from "../vocationalinstitutions.json"
+import React, { useRef, useState, useEffect } from 'react'
+// import schoolsFromFile from "../vocationalinstitutions.json"
 import {Link} from "react-router-dom"
 
 function AddProfessions() {
     const [message, setMessage] = useState("Lisa eriala");
-    const [professions, setProfessions] = useState(schoolsFromFile.slice());
+    const [professions, setProfessions] = useState([]);
     const [schoolIndex, setSchoolIndex] = useState(0);
     const nameRef = useRef('');
     const urlRef = useRef('');
     const qualificationStandardRef = useRef('');
+    const url = "https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json"
+
+    useEffect(() => {
+      fetch(url)
+        .then(res => res.json())
+        .then(json => setProfessions(json || [])); 
+    }, []);
 
     const add = () => {
         const newProfession = {
@@ -19,6 +26,8 @@ function AddProfessions() {
 
         // Lisage uus eriala valitud kooli fields massiivi
         professions[schoolIndex].fields.push(newProfession);
+        fetch (url, {method: "PUT", body: JSON.stringify(professions)});  
+        
 
         setProfessions([...professions]); // Uuendage professionide olekut
         setMessage("Eriala lisatud");
