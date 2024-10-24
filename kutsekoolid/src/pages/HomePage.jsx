@@ -9,6 +9,7 @@ function HomePage() {
     const [professions, setProfessions] = useState([]);
     const [localProfessions, setLocalProfessions] = useState([]);
     const url = "https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json"
+    
 
     useEffect(() => {
         fetch(url)
@@ -17,16 +18,17 @@ function HomePage() {
             setProfessions(json || []);
             setLocalProfessions(json || []);
           })
-      }, []);
-
-      
+      }, []);      
     
 
     const findProfessions = () => {
-        const result = localProfessions.filter(profession => 
-          profession.name.toLowerCase().includes(searchRef.current.value.toLowerCase()) ||
-          profession.fields(field => field.name.toLowerCase().includes(searchRef.current.value.toLowerCase()))
-      );
+        const result = localProfessions.map(kool => ({
+          ...kool, //jäta kõik ülejäänud alles, välja arvatud mis hakkab allpool tulema
+          "fields": kool.fields.filter(field =>          
+            field.name.toLowerCase().includes(searchRef.current.value.toLowerCase())
+          )
+    }));
+    console.log(result[1].fields);
         setProfessions(result);
       }
 
