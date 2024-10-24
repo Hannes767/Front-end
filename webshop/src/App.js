@@ -15,6 +15,7 @@ import NotFound from './pages/global/NotFound';
 import Login from './pages/auth/Login';
 import NavigationBar from './components/NavigationBar';
 import SignUp from './pages/auth/SignUp';
+import Firebase from './pages/admin/Firebase';
 
 
 
@@ -42,6 +43,8 @@ function App() {
         <Route path="signup" element={<SignUp/>}/>
 
         <Route path='*' element={ <NotFound/> }/>
+
+        <Route path="admin/google-login" element={<Firebase/>}/>
         
       </Routes>
     </div>
