@@ -14,7 +14,7 @@ function HaldaJooke() {
     <div>
         <Link to="/">
             <button>Halda jooke</button>
-        </Link>
+        </Link>              
         <br /><br />
 
         <div>Kokku {joogid.length} tk</div>
