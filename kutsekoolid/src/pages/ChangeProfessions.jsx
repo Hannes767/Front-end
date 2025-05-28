@@ -45,6 +45,9 @@ function ChangeProfessions() {
         <label>Eriala kutsestandard</label><br />
         <input ref={qualificationStandardRef} type="url" defaultValue={found.fields[fieldIndex].qualificationStandard}/><br />
 
+      
+
+
         <Link to="/">
           <button onClick={change}>Muuda</button><br />
         </Link>

@@ -36,23 +36,57 @@ function HomePage() {
         return <Spinner/>
       }
 
-      const sortAZ = () => {
-        professions.sort((a,b) => a.fields.name.localeCompare(b.fields.name, "et"));
-        setProfessions(professions.slice());
-      }
+        // const sortAZ = () => {
+        //   professions.sort((a,b) => a.fields.name.localeCompare(b.fields.name, "et"));
+        //   setProfessions(professions.slice());
+        // }
+
+        // Jah, sinu koodis on loogiline viga selles, kuidas andmeid sorteeritakse. Probleem on
+        //  selles,
+        //  et sa eeldad, et iga a ja b on objektid, millel on otse fields.name olemas — aga 
+        // tegelikult sinu andmestruktuuris on:
+
+        // professions on koolide list
+
+        // Igal koolil on fields, mis on massiv erialadest
+
+        // Seega fields.name ei ole olemas — fields on massiv, mitte objekt.
+
+        const sortAZ = () => {
+         const sorted = professions.map(school => ({
+            ...school,
+            fields: [...school.fields].sort((a, b) =>
+              a.name.localeCompare(b.name, "et")
+            )
+          }));
+        setProfessions(sorted);
+        };
+
+
+      // const sortZA = () => {
+      //   professions.sort((a,b) => b.name.localeCompare(a.name, "et"));
+      //   setProfessions(professions.slice());
+      // }
+
+      const sortZA = () => {
+        const sorted = [...professions].sort((a, b) =>
+          b.name.localeCompare(a.name, "et")
+        );
+        setProfessions(sorted);
+      };
+
 
   return (
     <div>
         <Link to="/add-professions">
-            <button>Lisa erialasid</button>
+            <button>Lisa ja muuda erialasid</button>
         </Link>
-        <Link to="/change-professions">
-            <button>Muuda erialasid</button>
-        </Link>
+        
 
         <input ref={searchRef} onChange={findProfessions} type="text" />
         <br /><br />
         <button onClick={sortAZ}>Sorteeri A-Z</button>
+        <button onClick={sortZA}>Sorteeri Z-A</button>
 
         <br /><br />
         {professions.map((school, index) => (
