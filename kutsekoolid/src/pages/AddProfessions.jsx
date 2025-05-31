@@ -1,23 +1,51 @@
 import React, { useRef, useState, useEffect } from 'react'
 // import schoolsFromFile from "../vocationalinstitutions.json"
 import {Link} from "react-router-dom"
+import { auth } from '../firebase'; // Lisa see
+import { onAuthStateChanged } from 'firebase/auth';
 
 function AddProfessions() {
     const [message, setMessage] = useState("Lisa eriala");
     const [professions, setProfessions] = useState([]);
     const [schoolIndex, setSchoolIndex] = useState(0);
+    const [user, setUser] = useState(null);
     const nameRef = useRef('');
     const urlRef = useRef('');
     const qualificationStandardRef = useRef('');
+    const schoolRef = useRef('')
     const url = "https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json"
 
     useEffect(() => {
-      fetch(url)
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        console.log("Kasutaja:", user);
+        setUser(user);
+        });
+        fetch(url)
         .then(res => res.json())
         .then(json => setProfessions(json || [])); 
+
+        return () => unsubscribe();
     }, []);
 
-    const add = () => {
+    
+
+    const add = async () => {
+        console.log("add funktsioon käivitus");
+
+    if (!user) {
+      alert("Ainult sisselogitud kasutaja saab lisada");
+      console.log("Kasutaja on null"); // <- See peab ka ilmuma, kui pole sisse logitud
+      return;
+    }
+
+    const idToken = await user.getIdToken(); // get Firebase ID token
+    console.log("Token:", idToken); // <- See logib tokeni välja
+
+    if (!idToken) {
+    console.error("ID-token puudub!");
+    return;
+    }
+    console.log("Token olemas:", idToken);
         const newProfession = {
             name: nameRef.current.value,
             url: urlRef.current.value,
@@ -26,7 +54,25 @@ function AddProfessions() {
 
         // Lisage uus eriala valitud kooli fields massiivi
         professions[schoolIndex].fields.push(newProfession);
-        fetch (url, {method: "PUT", body: JSON.stringify(professions)});  
+
+        const urlWithAuth = `https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json?auth=${idToken}`;
+        console.log("URL fetchiks:", urlWithAuth);
+
+        fetch(urlWithAuth, {
+         method: "PUT",
+        headers: {
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify(professions)
+        })
+
+                .then(res => {
+                if (!res.ok) throw new Error(`Server error: ${res.status}`);
+                return res.json();
+                })
+                .then(data => console.log("Success:", data))
+                .catch(err => console.error("Viga:", err)); 
+
         
 
         setProfessions([...professions]); // Uuendage professionide olekut
@@ -55,10 +101,9 @@ function AddProfessions() {
 
         <select onChange={(e) => setSchoolIndex(Number(e.target.value))} value={schoolIndex}>
             {professions.map((school, index) => (
-            <option key={index}>{school.name}</option>
+            <option key={index} value={index}>{school.name}</option>
             ))}
         </select><br /><br />
-
         <label>Eriala nimetus</label><br />
         <input ref={nameRef} type="text" /><br />
         <label>Eriala koduleht</label><br />
