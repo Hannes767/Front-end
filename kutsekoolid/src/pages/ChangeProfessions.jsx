@@ -70,7 +70,7 @@ function ChangeProfessions() {
         }
 
         alert("Eriala edukalt muudetud");
-        navigate("/"); // pärast edukat salvestust mine tagasi avalehele
+        navigate("/add-professions"); // pärast edukat salvestust mine tagasi avalehele
       } catch (err) {
       let serverResponse = "";
       try {

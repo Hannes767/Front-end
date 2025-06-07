@@ -3,6 +3,10 @@ import React, { useRef, useState, useEffect } from 'react'
 import {Link} from "react-router-dom"
 import { auth } from '../firebase'; // Lisa see
 import { onAuthStateChanged } from 'firebase/auth';
+import { Button, Alert, Container } from "react-bootstrap";
+import { logout } from "../authService";
+import { useNavigate } from "react-router-dom";
+
 
 function AddProfessions() {
     const [message, setMessage] = useState("Lisa eriala");
@@ -12,7 +16,18 @@ function AddProfessions() {
     const nameRef = useRef('');
     const urlRef = useRef('');
     const qualificationStandardRef = useRef('');
-    const schoolRef = useRef('')
+
+    const [logoutMessage, setLogoutMessage] = useState("");
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await logout();
+        setLogoutMessage("Oled edukalt välja logitud.");
+        setTimeout(() => {
+        navigate("/"); // suuna avalehele
+        }, 1500);
+    };
+    
     const url = "https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json"
 
     useEffect(() => {
@@ -96,7 +111,24 @@ function AddProfessions() {
     //     }
     
   return (
-    <div>
+    <div>        
+        <br />
+        {logoutMessage && <Alert variant="success">{logoutMessage}</Alert>}
+
+        {user && (
+        <Container style={{ padding: "2rem" }}>
+          <h2>Tere, {user.email}!</h2>
+          <Button variant="secondary" onClick={handleLogout}>
+            Logi välja
+          </Button>
+        </Container>
+      )}
+
+        {/* <Button variant="secondary" onClick={handleLogout}>
+            Logi välja
+        </Button> */}
+        <br /><br />
+
         <div>{message}</div>
 
         <select onChange={(e) => setSchoolIndex(Number(e.target.value))} value={schoolIndex}>

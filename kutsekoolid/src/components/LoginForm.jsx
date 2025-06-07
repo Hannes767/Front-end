@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import { Button, Form, Alert } from "react-bootstrap";
 import { login } from "../authService";
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     try {
       await login(email, password);
+      navigate(from, { replace: true }); // ← SUUNA TAGASI
     } catch (err) {
       setError(err.message);
     }
