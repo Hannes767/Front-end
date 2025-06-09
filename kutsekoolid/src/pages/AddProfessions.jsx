@@ -30,6 +30,7 @@ function AddProfessions() {
     
     const url = "https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json"
 
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
         console.log("Kasutaja:", user);
