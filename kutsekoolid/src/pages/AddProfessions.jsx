@@ -28,7 +28,8 @@ function AddProfessions() {
         }, 1500);
     };
     
-    const url = "https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json"
+    const url = "https://front-end-production-46aa.up.railway.app/professions"
+
 
 
     useEffect(() => {
@@ -71,7 +72,8 @@ function AddProfessions() {
         // Lisage uus eriala valitud kooli fields massiivi
         professions[schoolIndex].fields.push(newProfession);
 
-        const urlWithAuth = `https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json?auth=${idToken}`;
+        const urlWithAuth = "https://front-end-production-46aa.up.railway.app/professions"
+
         console.log("URL fetchiks:", urlWithAuth);
 
         fetch(urlWithAuth, {

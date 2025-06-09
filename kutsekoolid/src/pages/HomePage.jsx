@@ -8,7 +8,8 @@ function HomePage() {
     const searchRef = useRef();
     const [professions, setProfessions] = useState([]);
     const [localProfessions, setLocalProfessions] = useState([]);
-    const url = "https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json"
+    const url = "https://front-end-production-46aa.up.railway.app/professions"
+
 
     
 

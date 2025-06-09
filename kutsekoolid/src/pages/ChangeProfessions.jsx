@@ -16,7 +16,8 @@ function ChangeProfessions() {
     const urlRef = useRef('');
     const qualificationStandardRef = useRef('');
     
-    const url = "https://kutsekoolid-default-rtdb.europe-west1.firebasedatabase.app/professions.json"
+    const url = "https://front-end-production-46aa.up.railway.app/professions"
+
 
     useEffect(() => {
       // Kuula sisselogimist
