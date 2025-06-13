@@ -19,20 +19,30 @@ function ChangeProfessions() {
     const url = "https://front-end-production-46aa.up.railway.app/professions"
 
 
+    // 1. Kuula autentimist
     useEffect(() => {
-      // Kuula sisselogimist
-    const unsubscribe = onAuthStateChanged(auth, (u) => {
+      const unsubscribe = onAuthStateChanged(auth, (u) => {
       setUser(u);
-
     });
-      fetch(url)
+    return () => unsubscribe();
+    }, []);
+
+    // 2. Laadi andmed, kui kasutaja on teada
+    useEffect(() => {
+      if (!user) return;
+      
+        user.getIdToken().then(token => {
+        fetch(url, {
+        headers: {
+        "Authorization": `Bearer ${token}`
+        }
+      })
         .then(res => res.json())
         .then(json => setProfessions(json || []))
         .catch(err => console.error("Andmete laadimine ebaõnnestus:", err));
+      });       
 
-      return () => unsubscribe();
-
-    }, []);
+    }, [user]);
 
     
     if (!found) return <div>Eriala ei leitud</div>;

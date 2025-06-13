@@ -27,7 +27,8 @@ app.get("/", (req, res) => {
 });
 
 // GET /professions – Avalik
-app.get("/professions", async (req, res) => {
+// app.get("/professions", async (req, res)
+app.get("/professions", verifyFirebaseToken, async (req, res) => {
   try {
     const snapshot = await db.ref("/professions").once("value");
     const data = snapshot.val();

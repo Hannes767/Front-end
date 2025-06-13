@@ -1,6 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Spinner } from "react-bootstrap";
+
+
+
 // import schoolsFromFile from "../vocationalinstitutions.json"
 
 function HomePage() {
@@ -8,33 +11,61 @@ function HomePage() {
     const searchRef = useRef();
     const [professions, setProfessions] = useState([]);
     const [localProfessions, setLocalProfessions] = useState([]);
-    const url = "https://front-end-production-46aa.up.railway.app/professions"
+    // const url = "https://front-end-production-46aa.up.railway.app/professions"
 
-
+  useEffect(() => {
+  fetch("https://front-end-production-46aa.up.railway.app/professions")
+    .then(res => res.json())
+    .then(json => {
+      setProfessions(json || []);
+      setLocalProfessions(json || []);
+    })
+    .catch(err => console.error("Ei saanud elukutseid laadida", err));
+}, []);
     
 
-    useEffect(() => {
-        fetch(url)
-          .then(res => res.json())
-          .then(json => {
-            setProfessions(json || []);
-            setLocalProfessions(json || []);
-          })
-      }, []);      
+    // useEffect(() => {
+    //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //       user.getIdToken().then(token => {
+    //         fetch(url, {
+    //           headers: {
+    //             "Authorization": `Bearer ${token}`
+    //           }
+    //         })
+    //         .then(res => res.json())
+    //         .then(json => {
+    //         setProfessions(json || []);
+    //         setLocalProfessions(json || []);
+    //         });
+    //       });
+    //     }
+    //   });
+
+    //   return () => unsubscribe();
+    // }, []);
+    
     
 
     const findProfessions = () => {
-        const result = localProfessions.map(kool => ({
-          ...kool, //jäta kõik ülejäänud alles, välja arvatud mis hakkab allpool tulema
-          "fields": kool.fields.filter(field =>          
-            field.name.toLowerCase().includes(searchRef.current.value.toLowerCase())
-          )
-    }));
-    console.log(result[1].fields);
-        setProfessions(result);
-      }
+      const searchTerm = searchRef.current.value.toLowerCase();
+        if (!searchTerm) {
+          setProfessions(localProfessions);
+          return;
+        }
+
+      const result = localProfessions.map(kool => ({
+        ...kool, //jäta kõik ülejäänud alles, välja arvatud mis hakkab allpool tulema
+        "fields": kool.fields.filter(field =>          
+          field.name.toLowerCase().includes(searchTerm)
+        )
+      }));
+      console.log(result[1].fields);
+      setProfessions(result);
+    }
 
       if (localProfessions.length === 0) {
+        console.log("Ootame andmeid või kasutaja pole tuvastatud");
         return <Spinner/>
       }
 

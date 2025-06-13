@@ -34,15 +34,27 @@ function AddProfessions() {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-        console.log("Kasutaja:", user);
         setUser(user);
         });
-        fetch(url)
-        .then(res => res.json())
-        .then(json => setProfessions(json || [])); 
 
         return () => unsubscribe();
     }, []);
+
+    useEffect(() => {
+        if (!user) return;
+
+        user.getIdToken().then(token => {
+            fetch(url, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then(res => res.json())
+        .then(json => setProfessions(json || []))
+        .catch(err => console.error("Andmete laadimine ebaõnnestus:", err));
+        });
+    }, [user]);
+
 
     
 
@@ -54,6 +66,12 @@ function AddProfessions() {
       console.log("Kasutaja on null"); // <- See peab ka ilmuma, kui pole sisse logitud
       return;
     }
+
+    if (!professions[schoolIndex]) {
+        alert("Kooli ei leitud!");
+        return;
+    }
+
 
     const idToken = await user.getIdToken(); // get Firebase ID token
     console.log("Token:", idToken); // <- See logib tokeni välja
