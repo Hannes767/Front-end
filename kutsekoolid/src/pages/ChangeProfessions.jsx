@@ -46,7 +46,7 @@ function ChangeProfessions() {
 
       try {
         const token = await user.getIdToken();
-        const urlWithAuth = `${url}?auth=${token}`;
+        // const urlWithAuth = `${url}?auth=${token}`;
 
         professions[schoolIndex].fields[fieldIndex] = {       
           "name": nameRef.current.value,
@@ -58,13 +58,15 @@ function ChangeProfessions() {
         console.log("Kooli indeks:", schoolIndex, "Eriala indeks:", fieldIndex);
         console.log("Token:", token);
 
-        const res = await fetch(urlWithAuth,{
-          method: "PUT", 
+        const res = await fetch(url, {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}` // ← ÕIGE KOHT
           },
           body: JSON.stringify(professions),
-        });  
+        });
+ 
 
         if (!res.ok) {
         throw new Error(`Server error: ${res.status}`);
