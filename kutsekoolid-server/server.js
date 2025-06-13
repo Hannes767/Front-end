@@ -46,18 +46,18 @@ app.get("/", (req, res) => {
 });
 
 
-const allowedReferers = [
-  "http://localhost:3000",           // lokaalne arendus
-  "https://kutsekoolid.web.app/add-professions",             // asenda oma tegeliku domeeniga
-  // "https://www.minuleht.ee"          // kui sul on www-versioon ka
-];
-
 app.get("/professions", async (req, res) => {
   const referer = req.get("Referer") || "";
+  const allowedReferers = [
+    "http://localhost:3000",
+    "https://kutsekoolid.web.app",
+    "https://kutsekoolid.firebaseapp.com"
+  ];
   const isAllowed = allowedReferers.some(origin => referer.startsWith(origin));
 
   if (!isAllowed) {
-    return res.status(403).json({ error: "Ligipääs keelatud – vale päritolu" });
+    console.warn("Keelatud referer:", referer);
+    return res.status(403).json({ error: "Ligipääs keelatud" });
   }
 
   try {
