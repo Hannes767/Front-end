@@ -46,8 +46,20 @@ app.get("/", (req, res) => {
 });
 
 
-// GET /professions – Avalik, ei nõua tokenit
+const allowedReferers = [
+  "http://localhost:3000",           // lokaalne arendus
+  "https://kutsekoolid.web.app/add-professions",             // asenda oma tegeliku domeeniga
+  // "https://www.minuleht.ee"          // kui sul on www-versioon ka
+];
+
 app.get("/professions", async (req, res) => {
+  const referer = req.get("Referer") || "";
+  const isAllowed = allowedReferers.some(origin => referer.startsWith(origin));
+
+  if (!isAllowed) {
+    return res.status(403).json({ error: "Ligipääs keelatud – vale päritolu" });
+  }
+
   try {
     const snapshot = await db.ref("/professions").once("value");
     const data = snapshot.val();
@@ -57,6 +69,7 @@ app.get("/professions", async (req, res) => {
     res.status(500).json({ error: "Andmete laadimine ebaõnnestus" });
   }
 });
+
 
 
 
