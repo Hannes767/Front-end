@@ -3,6 +3,7 @@ import { initializeApp, cert } from "firebase-admin/app";
 import { getDatabase } from "firebase-admin/database";
 import dotenv from "dotenv";
 import cors from "cors";
+import { getAuth } from "firebase-admin/auth";
 
 dotenv.config();
 
@@ -20,6 +21,24 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+const verifyFirebaseToken = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ error: "Autentimine puudub" });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = await getAuth().verifyIdToken(token);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    console.error("ID-tokeni viga:", err);
+    return res.status(403).json({ error: "Kehtetu ID-token" });
+  }
+};
 
 // Tervitusroute
 app.get("/", (req, res) => {
@@ -39,26 +58,7 @@ app.get("/professions", verifyFirebaseToken, async (req, res) => {
   }
 });
 
-// Middleware: kontrolli Firebase ID tokenit
-import { getAuth } from "firebase-admin/auth";
 
-const verifyFirebaseToken = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ error: "Autentimine puudub" });
-  }
-
-  const token = authHeader.split(" ")[1];
-
-  try {
-    const decoded = await getAuth().verifyIdToken(token);
-    req.user = decoded;
-    next();
-  } catch (err) {
-    console.error("ID-tokeni viga:", err);
-    return res.status(403).json({ error: "Kehtetu ID-token" });
-  }
-};
 
 // PUT /professions – Ainult sisselogitud kasutajale
 app.put("/professions", verifyFirebaseToken, async (req, res) => {
