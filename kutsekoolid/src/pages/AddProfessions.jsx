@@ -98,6 +98,7 @@ function AddProfessions() {
          method: "PUT",
         headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${idToken}`,
         },
         body: JSON.stringify(professions)
         })
