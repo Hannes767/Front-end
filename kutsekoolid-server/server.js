@@ -45,9 +45,9 @@ app.get("/", (req, res) => {
   res.send("Server töötab!");
 });
 
-// GET /professions – Avalik
-// app.get("/professions", async (req, res)
-app.get("/professions", verifyFirebaseToken, async (req, res) => {
+
+// GET /professions – Avalik, ei nõua tokenit
+app.get("/professions", async (req, res) => {
   try {
     const snapshot = await db.ref("/professions").once("value");
     const data = snapshot.val();
@@ -57,6 +57,7 @@ app.get("/professions", verifyFirebaseToken, async (req, res) => {
     res.status(500).json({ error: "Andmete laadimine ebaõnnestus" });
   }
 });
+
 
 
 

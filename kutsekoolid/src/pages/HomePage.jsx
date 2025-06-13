@@ -17,8 +17,11 @@ function HomePage() {
   fetch("https://front-end-production-46aa.up.railway.app/professions")
     .then(res => res.json())
     .then(json => {
-      setProfessions(json || []);
-      setLocalProfessions(json || []);
+      const array = Array.isArray(json)
+        ? json
+        : Object.values(json || {});
+      setProfessions(array);
+      setLocalProfessions(array);
     })
     .catch(err => console.error("Ei saanud elukutseid laadida", err));
 }, []);
