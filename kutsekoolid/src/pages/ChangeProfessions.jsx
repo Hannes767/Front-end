@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { useParams, useNavigate } from "react-router-dom"
 import { auth } from '../firebase'; // lisa auth import
 import { onAuthStateChanged } from 'firebase/auth';
+import { Button } from "react-bootstrap";
 // import schoolsFromFile from "../vocationalinstitutions.json"
 
 
@@ -125,7 +126,7 @@ function ChangeProfessions() {
           Cannot read properties of null (reading 'value')
           at change (ChangeProfessions.jsx:50:1)change	@	ChangeProfessions.jsx:77 
           ChangeProfessions.jsx:78 Serveri vastus: undefined*/}
-          <button onClick={change}>Muuda</button><br />
+          <Button variant="primary" onClick={change}>Muuda</Button><br />
         {/* </Link> */}
     </div>
   )

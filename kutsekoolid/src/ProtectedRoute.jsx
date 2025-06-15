@@ -8,16 +8,20 @@ import { Navigate, useLocation } from "react-router-dom";
  * Kui kasutaja pole sisselogitud, suunab login lehele.
  */
 function ProtectedRoute({ children }) {
-  const { user } = useAuth();
-  const location = useLocation(); // <- saad teada, kust üritati tulla
+  const { user, loading } = useAuth(); // ← lisa loading
+  const location = useLocation();
 
+  // Kui autentimise olek veel laeb, näita laadimisolekut
+  if (loading) {
+    return <div>Laadimine...</div>;
+  }
 
+  // Kui kasutaja puudub (ja nüüd on kindel), suuna login-le
   if (!user) {
-    // Pole sisselogitud → suuna login lehele
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // Sisselogitud → näita lubatud sisu
+  // Kui kasutaja olemas, näita lehte
   return children;
 }
 

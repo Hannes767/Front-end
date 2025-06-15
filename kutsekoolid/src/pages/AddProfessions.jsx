@@ -6,6 +6,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { Button, Alert, Container } from "react-bootstrap";
 import { logout } from "../authService";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function AddProfessions() {
@@ -16,9 +18,9 @@ function AddProfessions() {
     const nameRef = useRef('');
     const urlRef = useRef('');
     const qualificationStandardRef = useRef('');
-
     const [logoutMessage, setLogoutMessage] = useState("");
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     const handleLogout = async () => {
         await logout();
@@ -30,11 +32,10 @@ function AddProfessions() {
     
     const url = "https://front-end-production-46aa.up.railway.app/professions"
 
-
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
         setUser(user);
+        setLoading(false); // nüüd on teada, kas user on olemas või mitte
         });
 
         return () => unsubscribe();
@@ -53,13 +54,10 @@ function AddProfessions() {
         .then(json => setProfessions(json || []))
         .catch(err => console.error("Andmete laadimine ebaõnnestus:", err));
         });
-    }, [user]);
-
-
-    
+    }, [user]);    
 
     const add = async () => {
-        console.log("add funktsioon käivitus");
+        console.log("Add funktsioon käivitus");
 
     if (!user) {
       alert("Ainult sisselogitud kasutaja saab lisada");
@@ -81,34 +79,35 @@ function AddProfessions() {
     return;
     }
     console.log("Token olemas:", idToken);
-        const newProfession = {
-            name: nameRef.current.value,
-            url: urlRef.current.value,
-            qualificationStandard: qualificationStandardRef.current.value,
-        };
+
+    const newProfession = {
+        name: nameRef.current.value,
+        url: urlRef.current.value,
+        qualificationStandard: qualificationStandardRef.current.value,
+    };
 
         // Lisage uus eriala valitud kooli fields massiivi
-        professions[schoolIndex].fields.push(newProfession);
+    professions[schoolIndex].fields.push(newProfession);
 
-        const urlWithAuth = "https://front-end-production-46aa.up.railway.app/professions"
+    const urlWithAuth = "https://front-end-production-46aa.up.railway.app/professions"
 
-        console.log("URL fetchiks:", urlWithAuth);
+    console.log("URL fetchiks:", urlWithAuth);
 
-        fetch(urlWithAuth, {
-         method: "PUT",
+    fetch(urlWithAuth, {
+        method: "PUT",
         headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${idToken}`,
-        },
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${idToken}`,
+            },
         body: JSON.stringify(professions)
         })
 
-                .then(res => {
-                if (!res.ok) throw new Error(`Server error: ${res.status}`);
-                return res.json();
-                })
-                .then(data => console.log("Success:", data))
-                .catch(err => console.error("Viga:", err)); 
+        .then(res => {
+            if (!res.ok) throw new Error(`Server error: ${res.status}`);
+            return res.json();
+        })
+        .then(data => console.log("Success:", data))
+        .catch(err => console.error("Viga:", err)); 
 
         
 
@@ -119,6 +118,36 @@ function AddProfessions() {
         urlRef.current.value = '';
         qualificationStandardRef.current.value = '';
     };
+
+    const deleteProfession = (schoolIdx, fieldIdx) => {
+    const updatedProfessions = [...professions];
+    updatedProfessions[schoolIdx].fields.splice(fieldIdx, 1);
+
+    setProfessions(updatedProfessions);
+
+    user.getIdToken().then(token => {
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify(updatedProfessions)
+        })
+        .then(res => {
+            if (!res.ok) throw new Error("Viga serveri poolelt");
+            return res.json();
+        })
+        .then(() => {
+            toast.success("Kustutatud!");
+        })
+        .catch(err => {
+            console.error("Kustutamine ebaõnnestus:", err);
+            toast.error("Kustutamine ebaõnnestus");
+        });
+    });
+};
+
 
     // const add = () => {
     //     schoolsFromFile.push(
@@ -131,7 +160,8 @@ function AddProfessions() {
     //     setProfessions(schoolsFromFile.slice());
     //     setMessage("Eriala lisatud");
     //     }
-    
+    if (loading) return <div>Laadimine...</div>;
+
   return (
     <div>        
         <br />
@@ -164,7 +194,7 @@ function AddProfessions() {
         <input ref={urlRef} type="url" /><br />
         <label>Eriala kutsestandard</label><br />
         <input ref={qualificationStandardRef} type="url" /><br />
-        <button onClick={add}>Lisa</button><br /><br />
+        <Button variant="success" onClick={add}>Lisa</Button><br /><br />
         {professions.map((profession, profIndex) => (
                 <div key={profIndex}>
                     <h3>{profession.name}</h3>
@@ -175,14 +205,21 @@ function AddProfessions() {
                             <a href={field.qualificationStandard} target="_blank" rel="noopener noreferrer">{field.qualificationStandard}</a>
                             <br />
                             <Link to= {"/change-professions/" + profIndex + "/" + index}>
-                                <button>Muuda</button>
+                                <Button variant="primary" className="me-2">Muuda</Button>
                             </Link>
+                            
+                            <Button variant="danger" onClick={() => deleteProfession(profIndex, index)}>Kustuta</Button>
                             <br /><br />
                         </div>
                     ))}
                     
                 </div>
             ))}
+
+            <ToastContainer
+                position="bottom-right"
+                autoClose={4000}          
+                theme="dark" />
     </div>
   )
 }
