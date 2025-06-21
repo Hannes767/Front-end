@@ -18,9 +18,11 @@ function AddProfessions() {
     const nameRef = useRef('');
     const urlRef = useRef('');
     const qualificationStandardRef = useRef('');
+    const categoryRef = useRef('');
     const [logoutMessage, setLogoutMessage] = useState("");
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
+    const [categoryAdded, setCategoryAdded] = useState(false);
 
     const handleLogout = async () => {
         await logout();
@@ -54,7 +56,55 @@ function AddProfessions() {
         .then(json => setProfessions(json || []))
         .catch(err => console.error("Andmete laadimine ebaõnnestus:", err));
         });
-    }, [user]);    
+    }, [user]);  
+    
+    useEffect(() => {
+        if (!user || professions.length === 0) return;
+        
+
+        const updated = professions.map((school) => ({
+            ...school,
+            fields: school.fields.map((field) => ({
+            ...field,
+             category: field.category || ""
+            })),
+        }));
+
+        const hasNewCategories = updated.some((school, i) =>
+            school.fields.some((field, j) => !professions[i].fields[j].category)
+        );
+
+        if (!hasNewCategories || categoryAdded) return;
+
+        user.getIdToken().then(token => {
+            fetch(url, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify(updated)
+            })
+
+            .then(res => {
+                if (!res.ok) throw new Error("Salvestamine ebaõnnestus");
+                return res.json();
+            })
+
+            .then(() => {
+                toast.success("Kõigile erialadele lisati 'category' väli!");
+                setProfessions(updated);
+                setCategoryAdded(true);
+            })
+
+            .catch(err => {
+                console.error("Viga category lisamisel:", err);
+                toast.error("Category lisamine ebaõnnestus");
+            });
+        });
+        
+    }, [user, professions, categoryAdded]);
+
 
     const add = async () => {
         console.log("Add funktsioon käivitus");
@@ -84,6 +134,7 @@ function AddProfessions() {
         name: nameRef.current.value,
         url: urlRef.current.value,
         qualificationStandard: qualificationStandardRef.current.value,
+        category: categoryRef.current.value,
     };
 
         // Lisage uus eriala valitud kooli fields massiivi
@@ -117,6 +168,7 @@ function AddProfessions() {
         nameRef.current.value = '';
         urlRef.current.value = '';
         qualificationStandardRef.current.value = '';
+        categoryRef.current.value = '';
     };
 
     const deleteProfession = (schoolIdx, fieldIdx) => {
@@ -194,6 +246,8 @@ function AddProfessions() {
         <input ref={urlRef} type="url" /><br />
         <label>Eriala kutsestandard</label><br />
         <input ref={qualificationStandardRef} type="url" /><br />
+        <label>Eriala valdkond</label><br />
+        <input ref={categoryRef} type="text" /><br />
         <Button variant="success" onClick={add}>Lisa</Button><br /><br />
         {professions.map((profession, profIndex) => (
                 <div key={profIndex}>
@@ -203,6 +257,7 @@ function AddProfessions() {
                             <div>{field.name}</div>
                             <a href={field.url} target="_blank" rel="noopener noreferrer">{field.url}</a> <br />
                             <a href={field.qualificationStandard} target="_blank" rel="noopener noreferrer">{field.qualificationStandard}</a>
+                            <div>{field.category}</div> <br />
                             <br />
                             <Link to= {"/change-professions/" + profIndex + "/" + index}>
                                 <Button variant="primary" className="me-2">Muuda</Button>
