@@ -140,6 +140,7 @@ function HomePage() {
                     <div>{field.name}</div>             
                     <a href={field.url} target="_blank" rel="noopener noreferrer">{field.url}</a> <br />
                     <a href={field.qualificationStandard} target="_blank" rel="noopener noreferrer">{field.qualificationStandard}</a>
+                    <div>{field.category}</div> <br />
                     <br /><br />
                     </div>))}
             </div>))}
