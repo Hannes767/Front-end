@@ -16,7 +16,7 @@ initializeApp({
 
 const db = getDatabase();
 const app = express();
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -91,6 +91,8 @@ app.put("/professions", verifyFirebaseToken, async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server töötab: http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server töötab: http://localhost:${port}`);
+// });
+// ❗ Serverless platvorm ootab seda:
+export default app;

@@ -12,7 +12,7 @@ export default function LoginForm() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/add-professions";
 
   const handleSubmit = async (e) => {
     e.preventDefault();

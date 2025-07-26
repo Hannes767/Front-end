@@ -92,7 +92,7 @@ function AddProfessions() {
             })
 
             .then(() => {
-                toast.success("Kõigile erialadele lisati 'category' väli!");
+                // toast.success("Kõigile erialadele lisati 'category' väli!");
                 setProfessions(updated);
                 setCategoryAdded(true);
             })
@@ -136,6 +136,19 @@ function AddProfessions() {
         qualificationStandard: qualificationStandardRef.current.value,
         category: categoryRef.current.value,
     };
+
+    const isFieldEmpty = (field) =>
+    !field.name && !field.url && !field.qualificationStandard && !field.category;
+
+    if (isFieldEmpty(newProfession)) {
+        toast.warn("Tühja eriala ei saa lisada!");
+        return;
+    }
+
+    // Eemalda olemasolevad tühjad field'id
+    professions[schoolIndex].fields = professions[schoolIndex].fields.filter(
+        (field) => !isFieldEmpty(field)
+    );
 
         // Lisage uus eriala valitud kooli fields massiivi
     professions[schoolIndex].fields.push(newProfession);
@@ -215,7 +228,7 @@ function AddProfessions() {
     if (loading) return <div>Laadimine...</div>;
 
   return (
-    <div>        
+    <div className='center'>        
         <br />
         {logoutMessage && <Alert variant="success">{logoutMessage}</Alert>}
 
@@ -231,6 +244,12 @@ function AddProfessions() {
         {/* <Button variant="secondary" onClick={handleLogout}>
             Logi välja
         </Button> */}
+        
+
+        <Link to="/schools">
+            <Button variant="info">Halda koole</Button>
+        </Link>
+
         <br /><br />
 
         <div>{message}</div>
@@ -270,6 +289,15 @@ function AddProfessions() {
                     
                 </div>
             ))}
+
+        {user && (
+        <Container style={{ padding: "2rem" }}>
+          <h2>Tere, {user.email}!</h2>
+          <Button variant="secondary" onClick={handleLogout}>
+            Logi välja
+          </Button>          
+        </Container>
+      )}
 
             <ToastContainer
                 position="bottom-right"

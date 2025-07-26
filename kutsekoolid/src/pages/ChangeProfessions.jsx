@@ -16,6 +16,7 @@ function ChangeProfessions() {
     const nameRef = useRef('');
     const urlRef = useRef('');
     const qualificationStandardRef = useRef('');
+    const categoryRef = useRef('');
     
     const url = "https://front-end-production-46aa.up.railway.app/professions"
 
@@ -62,7 +63,8 @@ function ChangeProfessions() {
         professions[schoolIndex].fields[fieldIndex] = {       
           "name": nameRef.current.value,
           "url": urlRef.current.value,
-          "qualificationStandard": qualificationStandardRef.current.value,       
+          "qualificationStandard": qualificationStandardRef.current.value,  
+          "category": categoryRef.current.value,     
         }
 
         console.log("Salvestatakse andmed:", professions);
@@ -107,7 +109,7 @@ function ChangeProfessions() {
 
     }
   return (
-    <div>
+    <div className='center'>
         <div>Muuda erialasid</div>
 
         <label>Eriala nimetus</label><br />
@@ -116,7 +118,8 @@ function ChangeProfessions() {
         <input  ref={urlRef} type="url" defaultValue={found.fields[fieldIndex].url}/><br />
         <label>Eriala kutsestandard</label><br />
         <input ref={qualificationStandardRef} type="url" defaultValue={found.fields[fieldIndex].qualificationStandard}/><br />
-
+        <label>Eriala valdkond</label><br />
+        <input  ref={categoryRef} type="text" defaultValue={found.fields[fieldIndex].category}/><br />
       
 
 

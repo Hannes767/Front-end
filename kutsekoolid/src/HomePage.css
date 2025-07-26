@@ -1,0 +1,125 @@
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.top-bar input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.sort-buttons button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+/* Vasak ja parem külgriba jäävad alles */
+.left-sidebar {
+  flex: 1;
+  min-width: 150px;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.right-sidebar {
+  flex: 1;
+  min-width: 150px;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+/* Keskosa – grid 3 tulbaga lauaarvutis ja paindlik mobiilis */
+.main-content {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 0 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Koolikaardid */
+.school-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.school-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Erialade kastid (kui kasutad, muidu võid jätta) */
+.field-card {
+  background-color: #f5f5f5;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Täpsemalt mobiilivaade (kui tahad, et 1 tulbaks muutuks kindlalt) */
+@media (max-width: 600px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    padding: 0 5px;
+  }
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.school-name {
+  overflow-wrap: break-word; /* lubab murduda vaid siis, kui vaja */
+  word-break: normal; /* ei murra sõnu suvalistest kohtadest */
+  hyphens: auto; /* kui soovid, et sõnad murduksid kriipsuga */  
+}
+
+.category-group {
+  margin-bottom: 1rem;
+}
+
+.category-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #003366;
+}
+
+.field-list {
+  padding-left: 12px;
+}
