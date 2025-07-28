@@ -63,6 +63,11 @@ app.get("/", (req, res) => {
   res.send("Server töötab!");
 });
 
+app.get("/health", (req, res) => {
+  console.log("Health check received");
+  res.send("Server on elus!");
+});
+
 app.get("/professions", async (req, res) => {
   try {
     const snapshot = await db.ref("/professions").once("value");
