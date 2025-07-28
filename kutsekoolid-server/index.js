@@ -16,12 +16,30 @@ initializeApp({
 
 const db = getDatabase();
 const app = express();
-//const port = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://kutsekoolid.web.app",
+  "https://kutsekoolid.firebaseapp.com"
+];
+
+// CORS middleware — pane see enne kõiki teisi route'e ja middleware-sid
+app.use(cors({
+  origin: function(origin, callback) {
+    // Kui origin puudub (nt otse Postmanist või serveripoolsed päringud), lubame
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS policy violation: Origin not allowed"));
+    }
+  }
+}));
+
 app.use(express.json());
 
+// Tokeni verifitseerimise middleware
 const verifyFirebaseToken = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -45,21 +63,7 @@ app.get("/", (req, res) => {
   res.send("Server töötab!");
 });
 
-
 app.get("/professions", async (req, res) => {
-  const referer = req.get("Referer") || "";
-  const allowedReferers = [
-    "http://localhost:3000",
-    "https://kutsekoolid.web.app",
-    "https://kutsekoolid.firebaseapp.com"
-  ];
-  const isAllowed = allowedReferers.some(origin => referer.startsWith(origin));
-
-  if (!isAllowed) {
-    console.warn("Keelatud referer:", referer);
-    return res.status(403).json({ error: "Ligipääs keelatud" });
-  }
-
   try {
     const snapshot = await db.ref("/professions").once("value");
     const data = snapshot.val();
@@ -70,11 +74,6 @@ app.get("/professions", async (req, res) => {
   }
 });
 
-
-
-
-
-// PUT /professions – Ainult sisselogitud kasutajale
 app.put("/professions", verifyFirebaseToken, async (req, res) => {
   const newData = req.body;
 
@@ -91,8 +90,4 @@ app.put("/professions", verifyFirebaseToken, async (req, res) => {
   }
 });
 
-// app.listen(port, () => {
-//   console.log(`Server töötab: http://localhost:${port}`);
-// });
-// ❗ Serverless platvorm ootab seda:
 export default app;
