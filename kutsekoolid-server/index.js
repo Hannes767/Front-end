@@ -4,10 +4,11 @@ import { getDatabase } from "firebase-admin/database";
 import dotenv from "dotenv";
 import cors from "cors";
 import { getAuth } from "firebase-admin/auth";
+import serviceAccount from "./firebase-service-account.json" assert { type: "json" };
 
 dotenv.config();
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_KEY_JSON);
+// const serviceAccount = JSON.parse(process.env.FIREBASE_KEY_JSON);
 
 initializeApp({
   credential: cert(serviceAccount),
