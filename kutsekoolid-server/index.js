@@ -24,20 +24,25 @@ const allowedOrigins = [
 ];
 
 // CORS middleware — pane see enne kõiki teisi route'e ja middleware-sid
-app.use(cors({
-  origin: function(origin, callback) {
-    // Kui origin puudub (nt otse Postmanist või serveripoolsed päringud), lubame
-    if (!origin) return callback(null, true);
+  // app.use(cors({
+  //   origin: function(origin, callback) {
+  //     // Kui origin puudub (nt otse Postmanist või serveripoolsed päringud), lubame
+  //     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS policy violation: Origin not allowed"));
-    }
-  }
+  //     if (allowedOrigins.includes(origin)) {
+  //       callback(null, true);
+  //     } else {
+  //       callback(new Error("CORS policy violation: Origin not allowed"));
+  //     }
+  //   }
+  // }));
+
+  // app.use(express.json());
+
+app.use(cors({
+  origin: '*'
 }));
 
-app.use(express.json());
 
 // Tokeni verifitseerimise middleware
 const verifyFirebaseToken = async (req, res, next) => {
